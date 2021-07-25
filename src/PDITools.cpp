@@ -1,6 +1,6 @@
 /*
  * File: PDITools.cpp
- * Project: src
+ * Project: PDIC
  * File Created: Wednesday, 12th May 2021 3:23:04 pm
  * Author: kbarre (kevin.barre@epitech.eu)
  * -----
@@ -122,12 +122,15 @@ namespace PDI
             describePointer(typeIdentifier, starsNbr, typeRepr, ostream);
         else
             ostream << typeRepr;
+        if (typeIdentifier.offset)
+            ostream << ", offset: " << typeIdentifier.offset;
         ostream << " }";
         typeRepr = ostream.str();
     }
 
     void describeArray(const std::vector<std::string> &arrays,
-                       std::string &typeRepr)
+                       std::string &typeRepr,
+                       const uint64_t offset)
     {
         std::ostringstream ostream;
         const std::size_t arrayLengh = arrays.size();
@@ -138,7 +141,10 @@ namespace PDI
 
         std::copy(arrays.cbegin(), arrays.cend() - 1,
                   std::ostream_iterator<std::string>(ostream, ", "));
-        ostream << arrays.back() << (arrayLengh > 1 ? "]" : "") << " }";
+        ostream << arrays.back() << (arrayLengh > 1 ? "]" : "");
+        if (offset)
+            ostream << ", offset: " << offset;
+        ostream << " }";
 
         typeRepr = ostream.str();
     }
@@ -146,7 +152,7 @@ namespace PDI
     void describePragmaArray(const TypeAttr &typeIdentifier,
                              std::string &typeRepr)
     {
-        describeArray(typeIdentifier.pragma.arraySizes, typeRepr);
+        describeArray(typeIdentifier.pragma.arraySizes, typeRepr, typeIdentifier.offset);
     }
 
     std::map<std::string, std::string>

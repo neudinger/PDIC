@@ -1,6 +1,6 @@
 /*
  * File: PDIDecls.cpp
- * Project: src
+ * Project: PDIC
  * File Created: Monday, 10th May 2021 12:23:33 am
  * Author: kbarre (kevin.barre@epitech.eu)
  * -----
@@ -74,7 +74,6 @@ namespace PDI
     TokenList.push_back(RParTok);
     TokenList.push_back(RParTok);
   }
-
   void PragmaHandler::HandlePragma(clang::Preprocessor &PP,
                                    clang::PragmaIntroducer Introducer,
                                    clang::Token &PragmaTok)
@@ -102,7 +101,6 @@ namespace PDI
     // Do NOT delete TokenArray
     // It will remove AST information
   }
-
   const bool PDIDeclVisitor::VisitVarDecl(const clang::VarDecl *varDecl)
   {
     typeIdentifiers[varDecl->getNameAsString()] = EvalDecl(varDecl);
@@ -122,7 +120,14 @@ namespace PDI
     if (recordDecl->getNameAsString().empty())
       WARN("Anonymous struct used : First alias Or generated ID will be used as StructName", recordDecl);
 
+    // Check if
+    // #pragma pack
+    // #pragma pack(n)
+    // https://docs.microsoft.com/en-us/cpp/preprocessor/pack?view=msvc-160
+    // and __attribute__((packed))
     if (const auto *MFAA = recordDecl->getAttr<clang::MaxFieldAlignmentAttr>())
+      curentStruct.packed = true;
+    else if (recordDecl->getAttr<clang::PackedAttr>())
       curentStruct.packed = true;
 
     structIdentifiers[reinterpret_cast<uintptr_t>(recordDecl->getTypeForDecl())] = curentStruct;
@@ -167,7 +172,6 @@ namespace PDI
     curentStruct.alias.push_back(typedefDecl->getNameAsString());
     return true;
   }
-
   bool ASTConsumerDeclConsumer::HandleTopLevelDecl(clang::DeclGroupRef dg)
   {
     for (clang::Decl *decl : dg)
@@ -239,7 +243,7 @@ int main(int argc, const char **argv)
     DescribeTypes(ostream,
                   PDI::typeIdentifiers,
                   PDI::structIdentifiers);
-
+    // llvm::outs() << ostream.str() << "\n"; // debug only
     outputFile << ostream.str();
     outputFile.close();
     PDI::typeIdentifiers.clear();

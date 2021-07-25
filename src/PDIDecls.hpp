@@ -1,6 +1,6 @@
 /*
  * File: PDIDecls.hpp
- * Project: src
+ * Project: PDIC
  * File Created: Wednesday, 21st July 2021 4:34:34 pm
  * Author: kbarre (kevin.barre@epitech.eu)
  * -----

@@ -1,0 +1,11 @@
+data:
+ array: { type: array, subtype: int, size: 24 }
+ array_of_pointers: { type: array, subtype:  { type: pointer, subtype: double }, size: 21 }
+ global_char: 
+  type: char
+ global_float_pointer_of_pointer: { type: pointer, subtype:  { type: pointer, subtype: float } }
+ global_int: 
+  type: int
+ global_pointer: { type: pointer, subtype: void }
+ my_cube: { type: pointer, subtype:  { type: array, subtype: uint64, size: [10, 10, 10] } }
+ pointer_of_array: { type: pointer, subtype:  { type: array, subtype: int32, size: 42 } }

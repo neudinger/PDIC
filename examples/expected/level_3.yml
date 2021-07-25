@@ -1,0 +1,180 @@
+structs:
+ Structure1:
+  type: record
+  name: Structure1
+  alias: [St1]
+  fieldsize: 5
+  buffersize: 16
+  packed: false
+  members:
+   c:
+    offset: 9   
+    type: char
+   id1:   
+    type: int
+   id2:
+    offset: 4   
+    type: int
+   name:
+    offset: 8   
+    type: char
+   percentage:
+    offset: 12   
+    type: float
+ structure2:
+  type: record
+  name: structure2
+  fieldsize: 6
+  buffersize: 22
+  packed: true
+  members:
+   c:
+    offset: 9   
+    type: char
+   id1:   
+    type: int
+   id2:
+    offset: 5   
+    type: int
+   name:
+    offset: 4   
+    type: char
+   percentage:
+    offset: 10   
+    type: float
+   val: { type: pointer, subtype: St1, offset: 14 }
+ St3:
+  type: record
+  name: St3
+  alias: [St3]
+  fieldsize: 2
+  buffersize: 40
+  packed: false
+  members:
+   my_st1:
+    offset: 24
+    type: record
+    name: Structure1
+    alias: [St1]
+    fieldsize: 5
+    buffersize: 16
+    packed: false
+    members:
+     c:
+      offset: 9     
+      type: char
+     id1:     
+      type: int
+     id2:
+      offset: 4     
+      type: int
+     name:
+      offset: 8     
+      type: char
+     percentage:
+      offset: 12     
+      type: float
+
+   st2:
+    type: record
+    name: structure2
+    fieldsize: 6
+    buffersize: 22
+    packed: true
+    members:
+     c:
+      offset: 9     
+      type: char
+     id1:     
+      type: int
+     id2:
+      offset: 5     
+      type: int
+     name:
+      offset: 4     
+      type: char
+     percentage:
+      offset: 10     
+      type: float
+     val: { type: pointer, subtype: St1, offset: 14 }
+
+data:
+ dd:
+  type: record
+  name: structure2
+  fieldsize: 6
+  buffersize: 22
+  packed: true
+  members:
+   c:
+    offset: 9   
+    type: char
+   id1:   
+    type: int
+   id2:
+    offset: 5   
+    type: int
+   name:
+    offset: 4   
+    type: char
+   percentage:
+    offset: 10   
+    type: float
+   val: { type: pointer, subtype: St1, offset: 14 }
+
+ global_st3:
+  type: record
+  name: St3
+  alias: [St3]
+  fieldsize: 2
+  buffersize: 40
+  packed: false
+  members:
+   my_st1:
+    offset: 24
+    type: record
+    name: Structure1
+    alias: [St1]
+    fieldsize: 5
+    buffersize: 16
+    packed: false
+    members:
+     c:
+      offset: 9     
+      type: char
+     id1:     
+      type: int
+     id2:
+      offset: 4     
+      type: int
+     name:
+      offset: 8     
+      type: char
+     percentage:
+      offset: 12     
+      type: float
+
+   st2:
+    type: record
+    name: structure2
+    fieldsize: 6
+    buffersize: 22
+    packed: true
+    members:
+     c:
+      offset: 9     
+      type: char
+     id1:     
+      type: int
+     id2:
+      offset: 5     
+      type: int
+     name:
+      offset: 4     
+      type: char
+     percentage:
+      offset: 10     
+      type: float
+     val: { type: pointer, subtype: St1, offset: 14 }
+
+

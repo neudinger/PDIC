@@ -1,6 +1,6 @@
 /*
  * File: PDISerializer.cpp
- * Project: src
+ * Project: PDIC
  * File Created: Wednesday, 21st July 2021 11:54:17 am
  * Author: kbarre (kevin.barre@epitech.eu)
  * -----
@@ -63,7 +63,13 @@ void DescribeTypes(std::ostringstream &ostream,
     pushCharsIn(ostream, ' ', extraSpaces);
     ostream << typeIdentifier.name << ':';
     typeRepr = typeIdentifier.type;
-    if (typeIdentifier.offset)
+
+    // Dont print offset multiple time
+    if (typeIdentifier.offset &&
+        !typeIdentifier.starsNbr &&              // PDI::describePointer print offset
+        typeIdentifier.arraySizes.empty() &&     // PDI::describeArray print offset
+        typeIdentifier.pragma.arraySizes.empty() // PDI::describeArray print offset
+    )
     {
       ostream << "\n";
       pushCharsIn(ostream, ' ', extraSpaces + 1);
@@ -77,6 +83,8 @@ void DescribeTypes(std::ostringstream &ostream,
         PDI::describePragmaArray(typeIdentifier, typeRepr);
       if (typeIdentifier.starsNbr)
         PDI::describePointer(typeIdentifier, typeRepr);
+      if (!typeIdentifier.arraySizes.empty())
+        PDI::describeArray(typeIdentifier.arraySizes, typeRepr, typeIdentifier.offset);
       if (typeRepr == typeIdentifier.pragma.type)
         typeRepr = "\n" +
                    duplicateChar(' ', extraSpaces + 1) + "type: " + typeRepr;

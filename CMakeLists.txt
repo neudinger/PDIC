@@ -17,6 +17,10 @@ list(APPEND CMAKE_MODULE_PATH "${LLVM_CMAKE_DIR}")
 # set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++2a")
 
+# will remove `--` compilation command 
+# and add compilation databases for clang on this project.
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DCMAKE_EXPORT_COMPILE_COMMANDS")
+
 # Set compiler flags.
 include(HandleLLVMOptions)
 # Use LLVM and clang headers.

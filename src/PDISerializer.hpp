@@ -1,6 +1,6 @@
 /*
  * File: PDISerializer.hpp
- * Project: src
+ * Project: PDIC
  * File Created: Wednesday, 21st July 2021 11:55:12 am
  * Author: kbarre (kevin.barre@epitech.eu)
  * -----

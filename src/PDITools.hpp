@@ -1,6 +1,6 @@
 /*
  * File: PDITools.hpp
- * Project: src
+ * Project: PDIC
  * File Created: Wednesday, 12th May 2021 3:23:04 pm
  * Author: kbarre (kevin.barre@epitech.eu)
  * -----
@@ -22,8 +22,6 @@
 
 #include <sstream> // stringstream
 #include <fstream> // ofstream
-
-#include "llvm/ADT/StringSwitch.h" //llvm::StringSwitch
 
 // Import clang::TypeInfo
 #include "clang/AST/ASTContext.h"
@@ -155,7 +153,7 @@ namespace PDI
     std::string &clean(std::string &str);
     void split(const std::string &str, std::vector<std::string> &cont, const std::string delims = " ");
     uint8_t charLen(const std::string &declstring, const char &elem);
-    void describeArray(const std::vector<std::string> &arrays, std::string &typeRepr);
+    void describeArray(const std::vector<std::string> &arrays, std::string &typeRepr, const uint64_t offset = 0);
     void extractBetweens(const std::string &str, std::vector<std::string> &container, const std::string delims = "[]");
     void describePointer(const TypeAttr &typeIdentifier, std::string &typeRepr);
     void describePragmaArray(const TypeAttr &typeIdentifier, std::string &typeRepr);

@@ -23,12 +23,12 @@ float **global_float_pointer_of_pointer;
 int array[24];
 
 // pointer to array of int of size 42
-#pragma pdi type:int32, size:[42]
-int *pointer_of_array;
+#pragma pdi type:int32; size:[42]
+int **pointer_of_array;
 
-double *array_of_pointer[21];
+double *array_of_pointers[21];
 
-#pragma pdi type:int128
+#pragma pdi type:uint64
 #pragma pdi size:[10][10][10]
 unsigned ****my_cube;
 
