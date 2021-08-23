@@ -24,6 +24,7 @@ Testing/
 CMakeFiles/
 dist/
 .pytest_cache/
+_skbuild/
 
 # Python
 *.egg-info
