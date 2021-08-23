@@ -1,0 +1,1 @@
+/media/kbarre/1d7f0a7c-34d5-4837-ad9a-95be3ec8cb53/Documents/dev/desciptor/pdic/_skbuild/linux-x86_64-3.8/cmake-install/src/pdic/./pypdic.cpython-38-x86_64-linux-gnu.so

@@ -1,0 +1,1 @@
+{"args": ["/snap/bin/cmake", "-DDEBUG:BOOL=OFF", "-DCMAKE_BUILD_TYPE:STRING=Release"], "version": "3.21.1", "environment": {"PYTHONNOUSERSITE": null, "PYTHONPATH": "/usr/local/lib:"}}

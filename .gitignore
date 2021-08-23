@@ -1,7 +1,73 @@
-llvm-project-llvmorg-12.0.1/
+# 
+# File: .gitignore
+# Project: pdic
+# File Created: Thursday, 22nd July 2021 11:05:12 pm
+# Author: kbarre (kevin.barre@epitech.eu)
+# -----
+# Last Modified: Friday, 30th July 2021 6:04:17 pm
+# Modified By: kbarre (kevin.barre@epitech.eu>)
+# -----
+# Licenses: EUPL
+# -----
+# Copyright 2021 - 2021 neudinger
+# 
+
+# Futures Work
 dockerfiles/
+
+# Build directory
 build/
+llvm-project-llvmorg-12.0.1/
+docs/_build
+tests/bin
+Testing/
+CMakeFiles/
+dist/
+.pytest_cache/
+
+# Python
+*.egg-info
+__pycache__
+.eggs
+*.pyc
+
+# VS Code
+.vscode
+
+# Prerequisites
 *.yml
 *.tar*
-documentation/
 !examples/expected/*.yml
+!_config.yml
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+CMakeCache*
+*.cmake
+Makefile
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled python files
+core
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app

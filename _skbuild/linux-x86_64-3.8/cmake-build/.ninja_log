@@ -1,0 +1,6 @@
+# ninja log v5
+0	3230	1629717715296754009	CMakeFiles/pypdic.dir/src/pdic/PDISerializer.cpp.o	7cc13b8a47e1209b
+0	3665	1629717715732613647	CMakeFiles/pypdic.dir/src/pdic/PDITools.cpp.o	6720814b53924182
+0	13884	1629717725949426556	CMakeFiles/pypdic.dir/src/pdic/PDIDecls.cpp.o	bf4dcbe8ef86283
+13884	20831	1629717732787385675	pypdic.cpython-38-x86_64-linux-gnu.so	6218474ef0d61e21
+20831	20886	0	CMakeFiles/install.util	f4f542dfc5b9a078
