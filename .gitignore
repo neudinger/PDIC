@@ -14,6 +14,7 @@
 
 # Futures Work
 dockerfiles/
+.devcontainer/
 
 # Build directory
 build/
@@ -23,6 +24,7 @@ tests/bin
 Testing/
 CMakeFiles/
 dist/
+html/
 .pytest_cache/
 _skbuild/
 

@@ -243,9 +243,9 @@ void writeYML(const std::ostringstream &ostream,
 // TranslationUnitDecl *DC = AST->getASTContext().getTranslationUnitDecl();
 
 #if defined(SKBUILD)
-  #include "pypdicbind.hpp"
+#include "pypdicbind.hpp"
 #elif defined(GOOGLE_TEST)
-  #include "maintest.hpp"
+#include "maintest.hpp"
 #else
-  #include "main.hpp"
+#include "main.hpp"
 #endif // SKBUILD

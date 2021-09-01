@@ -31,8 +31,8 @@ version = os.getenv("version", default="0.0.1")
 # pip install -e . -v
 # pip install . --use-feature=in-tree-build -v
 # python setup.py build -G "Unix Makefiles"
-# python3 setup.py bdist_wheel -j `nproc`
-# python setup.py build_ext --inplace -j `nproc`
+# python3 setup.py bdist_wheel -G "Unix Makefiles" -j `nproc`
+# python setup.py build_ext  -G "Unix Makefiles" --inplace -j `nproc`
 
 setup(
     name="pdic",
