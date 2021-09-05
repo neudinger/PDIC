@@ -1,0 +1,735 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>aqelib.moltools.tools API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>aqelib.moltools.tools</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import io
+import pandas
+import mmh3
+import base64
+import json
+import multiprocessing
+from rdkit import Chem
+import rdkit.six as chemio
+from rdkit.Chem import AllChem
+from rdkit.Chem import PandasTools
+from rdkit.Chem import Descriptors, rdMolDescriptors
+from rdkit.Chem.EnumerateStereoisomers import \
+    EnumerateStereoisomers, StereoEnumerationOptions
+from functools import reduce, partial
+from typing import List, Callable, Tuple
+from ..chemaxon import cxcalc_dominant_tautomer_distribution
+from ..frametools import concat_dataframe
+from ..parallel.thread import map_parallel
+from ..loggers import chemlog
+from chembl_structure_pipeline import checker
+from chembl_structure_pipeline.standardizer \
+    import standardize_mol as chembl_standardize
+
+logger = chemlog.getLogger(__name__)
+# logger = chemlog.getLogger(&#34;distributed.worker&#34;)
+
+
+def smiles_to_mol(smiles: str) -&gt; Tuple[str, Chem.Mol]:
+    &#34;&#34;&#34;Return the Chem.Mol of smile string.
+    Chem.Mol object
+
+    Parameters
+    ----------
+
+    smile: str
+        input string
+
+    Returns:
+    ----------
+
+    Tuple[str, Chem.Mol]:
+        Returning smiles in str and his associated mol in rdkit.Chem.Mol
+
+    Raises
+    ------
+
+        Smiles cannot be None
+    &#34;&#34;&#34;
+    return (smiles, Chem.MolFromSmiles(smiles))
+
+
+def smiles_to_standard_mol(smile: str) -&gt; Chem.Mol:
+    return chembl_standardize(Chem.MolFromSmiles(smile))
+
+
+def standardize_mol(inputs: Tuple[str, Chem.Mol]) -&gt; Tuple[str, Chem.Mol]:
+    return (inputs[0],
+            chembl_standardize(inputs[1]) if inputs[1] else inputs[1])
+
+
+def standardize_mols(mols: List[Tuple[str, Chem.Mol]]) \
+        -&gt; List[Tuple[str, Chem.Mol]]:
+    return map_parallel(standardize_mol, mols,
+                        max_parallel=multiprocessing.cpu_count())
+
+
+def check_mol(mol: Chem.Mol):
+    checkers_list: list = [
+        &#34;NumAtomsMolChecker&#34;, &#34;HasIllegalBondTypeMolChecker&#34;,
+        &#34;HasIllegalBondStereoMolChecker&#34;, &#34;HasMultipleStereoBondsMolChecker&#34;,
+        &#34;HasManyOverlappingAtomsMolChecker&#34;, &#34;HasOverlappingAtomsMolChecker&#34;,
+        &#34;HasCrossedRingBondMolChecker&#34;, &#34;HasStereoBondInRingMolChecker&#34;,
+        &#34;Has3DMolChecker&#34;, &#34;ZeroCoordsMolChecker&#34;,
+        &#34;HasStereoBondToStereocenterMolChecker&#34;, &#34;DisallowedRadicalMolChecker&#34;
+    ]
+
+    if mol is None:
+        return [7, &#34;Illegal input&#34;]
+    res = []
+    # many_overlap = False # Dont used ??
+    for check in checker._checkers:
+        if check.__name__ in checkers_list:
+            logger.debug(check.__name__)
+            matched = check.check(mol)
+            if matched:
+                res.append((check.penalty, check.explanation))
+    return res
+
+
+def tautomer_distribution(mols: List[Chem.Mol]) -&gt; pandas.DataFrame:
+    &#34;&#34;&#34;Compute tautomer distribution of mols list
+    return pandas.DataFrame
+
+    - Parameters:
+    mols        (List[Chem.Mol]): Up dataframe
+
+    - Returns:
+    pandas.DataFrame: Returning one pandas.DataFrame
+
+    &#34;&#34;&#34;
+    return reduce(concat_dataframe,
+                  map_parallel(cxcalc_dominant_tautomer_distribution,
+                               mols, max_parallel=multiprocessing.cpu_count()))
+
+
+def enumerate_stereoisomers(inputs: Tuple[str, Chem.Mol]) \
+        -&gt; List[Tuple[str, Chem.Mol]]:
+    &#34;&#34;&#34;Enumerate stereoisomers from input mol
+    return List of Chem.Mol
+    List[Chem.Mol] list
+
+    - Parameters:
+    mol      (Chem.Mol): input molecule to find stereoisomers
+
+    - Returns:
+    List[Chem.Mol]: Returning all stereoisomers in Chem.Mol
+
+    mol cannot be None
+    Traceback (most recent call last):
+    ...
+    TypeError: enumerate_stereoisomers() missing 1 required positional argument: &#39;mol&#39;
+    &#34;&#34;&#34;  # noqa: E501
+    from itertools import zip_longest
+    input_smiles, mol = inputs
+    stereoisomers = []
+    _MolToSmiles = Chem.MolToSmiles
+    try:
+        opts = StereoEnumerationOptions(
+            tryEmbedding=False, unique=True, onlyUnassigned=True)
+        for stereo in EnumerateStereoisomers(mol, options=opts):
+            if not _MolToSmiles(stereo) == _MolToSmiles(mol):
+                for prop in mol.GetPropNames():
+                    stereo.SetProp(prop, mol.GetProp(prop))
+                stereoisomers.append(stereo)
+        if len(stereoisomers) == 0:
+            stereoisomers.append(mol)
+
+    except Exception as exception:
+        logger.exception(&#34;&#34;&#34;
+        Cannot enumerate_stereoisomers of %s because
+        %s
+        &#34;&#34;&#34;, input_smiles, repr(exception))
+    return zip_longest([input_smiles], stereoisomers, fillvalue=input_smiles)
+
+
+def normalize_mol_to_dict(inputs: Tuple[str, Chem.Mol]) -&gt; dict:
+    input_smiles, mol = inputs
+    return {
+        &#34;input_SMILES&#34;: input_smiles,
+        &#34;SMILES&#34;: Chem.MolToSmiles(mol) if mol else mol,
+        &#34;mol&#34;: Chem.MolToJSON(mol) if mol else mol,
+        &#34;inchi&#34;: Chem.MolToInchi(mol) if mol else mol,
+        &#34;inchikey&#34;: Chem.MolToInchiKey(mol) if mol else mol,
+        &#34;log_p&#34;: Descriptors.MolLogP(mol) if mol else mol,
+        &#34;qed_rdkit&#34;: Descriptors.qed(mol) if mol else mol,
+        &#34;tpsa&#34;: Descriptors.TPSA(mol, includeSandP=True) if mol else mol,
+        &#34;mol_weight&#34;: Descriptors.MolWt(mol) if mol else mol,
+        &#34;num_h_donors&#34;: Descriptors.NumHDonors(mol) if mol else mol,
+        &#34;num_h_acceptors&#34;: Descriptors.NumHAcceptors(mol) if mol else mol,
+        &#34;num_rotatable_bonds&#34;: Descriptors.NumRotatableBonds(mol)
+        if mol else mol,
+        &#34;num_rings&#34;: rdMolDescriptors.CalcNumRings(mol) if mol else mol,
+        &#34;num_aromatic_rings&#34;: rdMolDescriptors.CalcNumAromaticRings(mol)
+        if mol else mol,
+        &#34;num_atoms&#34;: mol.GetNumAtoms() if mol else mol,
+        &#34;net_molecular_charge&#34;: Chem.GetFormalCharge(mol) if mol else mol
+    }
+
+
+def mols_to_dataframe(inputs: List[Tuple[str, Chem.Mol]]) -&gt; pandas.DataFrame:
+    return pandas.json_normalize(
+        map_parallel(normalize_mol_to_dict, inputs,
+                     max_parallel=multiprocessing.cpu_count()),
+        max_level=1)
+
+
+def mol_to_dataframe(mol: Chem.Mol) -&gt; pandas.DataFrame:
+    return pandas.json_normalize([normalize_mol_to_dict(mol)])
+
+
+def generate_conformers(tauto_mol: tuple,  # Tuple[(str | Chem.Mol), str]
+                        numgenerate: int = 300,
+                        numconfs: int = 1) -&gt; pandas.DataFrame:
+    _MolToInchiKey: Callable = partial(Chem.MolToInchiKey, options=&#34;/FixedH&#34;)
+    mol, parent_inchikey = tauto_mol
+    if isinstance(mol, str):
+        mol: Chem.Mol = Chem.AddHs(Chem.JSONToMols(mol)[0])
+    AllChem.EmbedMolecule(mol)
+    # if AllChem.MMFFOptimizeMolecule(mol):  # Never work
+    # logger.warning(&#34;Cannot MMFFOptimizeMolecule mol: %s&#34;,
+    # _MolToInchiKey(mol))
+
+    AllChem.EmbedMultipleConfs(mol,
+                               numConfs=numgenerate,
+                               maxAttempts=1000,
+                               pruneRmsThresh=0.1,
+                               numThreads=multiprocessing.cpu_count())
+    energies = AllChem.MMFFOptimizeMoleculeConfs(mol)
+    energies_sorted = sorted(energies)
+    confIds = [energies.index(item) for item in energies_sorted]
+    logger.debug(f&#34;{numconfs} generated on {_MolToInchiKey(mol)}&#34;)
+    sio = chemio.StringIO()
+    pipe = None
+    for confId in confIds[:numconfs]:
+        pipe = Chem.SDWriter(sio)
+        pipe.write(mol, confId=confId)
+    if pipe:
+        pipe.flush()
+        pipe.close()
+    df_conformers: pandas.DataFrame = PandasTools.LoadSDF(
+        io.BytesIO(bytes(sio.getvalue(), &#34;ascii&#34;)),
+        molColName=&#34;mol&#34;, embedProps=True, removeHs=False
+    )
+    if not df_conformers.empty:
+        df_conformers[&#34;inchikey&#34;] = df_conformers[&#34;mol&#34;].map(_MolToInchiKey)
+        df_conformers[&#34;mol&#34;] = df_conformers[&#34;mol&#34;].map(Chem.MolToJSON)
+        df_conformers[&#34;parent_inchikey&#34;] = parent_inchikey
+    return df_conformers
+
+
+def round_jsonmol(jsonmol: str) -&gt; str:
+    mol_dict = json.loads(jsonmol)
+    coords = []
+    for coord in mol_dict[&#34;molecules&#34;][0][&#34;conformers&#34;][0][&#34;coords&#34;]:
+        coord = [round(c, 2) for c in coord]
+        coords.append(coord)
+    mol_dict[&#34;molecules&#34;][0][&#34;conformers&#34;][0][&#34;coords&#34;] = coords
+    return json.dumps(mol_dict)
+
+
+def hash_str(inputfile: str, objtype: type = str) -&gt; str:
+    inputfile_hash = mmh3.hash128(inputfile)
+    if objtype == str:
+        return base64.b64encode(
+            inputfile_hash.to_bytes(
+                (inputfile_hash.bit_length() + 7) // 8, &#39;big&#39;),
+            altchars=b&#34;-_&#34;).decode(&#34;UTF8&#34;)[:-2]
+    return inputfile_hash
+
+
+def hash_to_int(hash_val: str):
+    return int.from_bytes(base64.b64decode(f&#34;{hash_val}==&#34;), &#34;big&#34;)
+
+
+def hash_mol(mol: str,
+             objtype: type = int):  # str | int
+    mmhash = mmh3.hash128(mol)
+    if objtype == str:
+        return base64.b64encode(
+            mmhash.to_bytes((mmhash.bit_length() + 7) // 8, &#39;big&#39;),
+            altchars=b&#34;-_&#34;).decode(&#34;UTF8&#34;)[:-2]
+    return mmhash</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="aqelib.moltools.tools.check_mol"><code class="name flex">
+<span>def <span class="ident">check_mol</span></span>(<span>mol: rdkit.Chem.rdchem.Mol)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def check_mol(mol: Chem.Mol):
+    checkers_list: list = [
+        &#34;NumAtomsMolChecker&#34;, &#34;HasIllegalBondTypeMolChecker&#34;,
+        &#34;HasIllegalBondStereoMolChecker&#34;, &#34;HasMultipleStereoBondsMolChecker&#34;,
+        &#34;HasManyOverlappingAtomsMolChecker&#34;, &#34;HasOverlappingAtomsMolChecker&#34;,
+        &#34;HasCrossedRingBondMolChecker&#34;, &#34;HasStereoBondInRingMolChecker&#34;,
+        &#34;Has3DMolChecker&#34;, &#34;ZeroCoordsMolChecker&#34;,
+        &#34;HasStereoBondToStereocenterMolChecker&#34;, &#34;DisallowedRadicalMolChecker&#34;
+    ]
+
+    if mol is None:
+        return [7, &#34;Illegal input&#34;]
+    res = []
+    # many_overlap = False # Dont used ??
+    for check in checker._checkers:
+        if check.__name__ in checkers_list:
+            logger.debug(check.__name__)
+            matched = check.check(mol)
+            if matched:
+                res.append((check.penalty, check.explanation))
+    return res</code></pre>
+</details>
+</dd>
+<dt id="aqelib.moltools.tools.enumerate_stereoisomers"><code class="name flex">
+<span>def <span class="ident">enumerate_stereoisomers</span></span>(<span>inputs: Tuple[str, rdkit.Chem.rdchem.Mol]) ‑> List[Tuple[str, rdkit.Chem.rdchem.Mol]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Enumerate stereoisomers from input mol
+return List of Chem.Mol
+List[Chem.Mol] list</p>
+<ul>
+<li>
+<p>Parameters:
+mol
+(Chem.Mol): input molecule to find stereoisomers</p>
+</li>
+<li>
+<p>Returns:
+List[Chem.Mol]: Returning all stereoisomers in Chem.Mol</p>
+</li>
+</ul>
+<p>mol cannot be None
+Traceback (most recent call last):
+&hellip;
+TypeError: enumerate_stereoisomers() missing 1 required positional argument: 'mol'</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def enumerate_stereoisomers(inputs: Tuple[str, Chem.Mol]) \
+        -&gt; List[Tuple[str, Chem.Mol]]:
+    &#34;&#34;&#34;Enumerate stereoisomers from input mol
+    return List of Chem.Mol
+    List[Chem.Mol] list
+
+    - Parameters:
+    mol      (Chem.Mol): input molecule to find stereoisomers
+
+    - Returns:
+    List[Chem.Mol]: Returning all stereoisomers in Chem.Mol
+
+    mol cannot be None
+    Traceback (most recent call last):
+    ...
+    TypeError: enumerate_stereoisomers() missing 1 required positional argument: &#39;mol&#39;
+    &#34;&#34;&#34;  # noqa: E501
+    from itertools import zip_longest
+    input_smiles, mol = inputs
+    stereoisomers = []
+    _MolToSmiles = Chem.MolToSmiles
+    try:
+        opts = StereoEnumerationOptions(
+            tryEmbedding=False, unique=True, onlyUnassigned=True)
+        for stereo in EnumerateStereoisomers(mol, options=opts):
+            if not _MolToSmiles(stereo) == _MolToSmiles(mol):
+                for prop in mol.GetPropNames():
+                    stereo.SetProp(prop, mol.GetProp(prop))
+                stereoisomers.append(stereo)
+        if len(stereoisomers) == 0:
+            stereoisomers.append(mol)
+
+    except Exception as exception:
+        logger.exception(&#34;&#34;&#34;
+        Cannot enumerate_stereoisomers of %s because
+        %s
+        &#34;&#34;&#34;, input_smiles, repr(exception))
+    return zip_longest([input_smiles], stereoisomers, fillvalue=input_smiles)</code></pre>
+</details>
+</dd>
+<dt id="aqelib.moltools.tools.generate_conformers"><code class="name flex">
+<span>def <span class="ident">generate_conformers</span></span>(<span>tauto_mol: tuple, numgenerate: int = 300, numconfs: int = 1) ‑> pandas.core.frame.DataFrame</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_conformers(tauto_mol: tuple,  # Tuple[(str | Chem.Mol), str]
+                        numgenerate: int = 300,
+                        numconfs: int = 1) -&gt; pandas.DataFrame:
+    _MolToInchiKey: Callable = partial(Chem.MolToInchiKey, options=&#34;/FixedH&#34;)
+    mol, parent_inchikey = tauto_mol
+    if isinstance(mol, str):
+        mol: Chem.Mol = Chem.AddHs(Chem.JSONToMols(mol)[0])
+    AllChem.EmbedMolecule(mol)
+    # if AllChem.MMFFOptimizeMolecule(mol):  # Never work
+    # logger.warning(&#34;Cannot MMFFOptimizeMolecule mol: %s&#34;,
+    # _MolToInchiKey(mol))
+
+    AllChem.EmbedMultipleConfs(mol,
+                               numConfs=numgenerate,
+                               maxAttempts=1000,
+                               pruneRmsThresh=0.1,
+                               numThreads=multiprocessing.cpu_count())
+    energies = AllChem.MMFFOptimizeMoleculeConfs(mol)
+    energies_sorted = sorted(energies)
+    confIds = [energies.index(item) for item in energies_sorted]
+    logger.debug(f&#34;{numconfs} generated on {_MolToInchiKey(mol)}&#34;)
+    sio = chemio.StringIO()
+    pipe = None
+    for confId in confIds[:numconfs]:
+        pipe = Chem.SDWriter(sio)
+        pipe.write(mol, confId=confId)
+    if pipe:
+        pipe.flush()
+        pipe.close()
+    df_conformers: pandas.DataFrame = PandasTools.LoadSDF(
+        io.BytesIO(bytes(sio.getvalue(), &#34;ascii&#34;)),
+        molColName=&#34;mol&#34;, embedProps=True, removeHs=False
+    )
+    if not df_conformers.empty:
+        df_conformers[&#34;inchikey&#34;] = df_conformers[&#34;mol&#34;].map(_MolToInchiKey)
+        df_conformers[&#34;mol&#34;] = df_conformers[&#34;mol&#34;].map(Chem.MolToJSON)
+        df_conformers[&#34;parent_inchikey&#34;] = parent_inchikey
+    return df_conformers</code></pre>
+</details>
+</dd>
+<dt id="aqelib.moltools.tools.hash_mol"><code class="name flex">
+<span>def <span class="ident">hash_mol</span></span>(<span>mol: str, objtype: type = builtins.int)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def hash_mol(mol: str,
+             objtype: type = int):  # str | int
+    mmhash = mmh3.hash128(mol)
+    if objtype == str:
+        return base64.b64encode(
+            mmhash.to_bytes((mmhash.bit_length() + 7) // 8, &#39;big&#39;),
+            altchars=b&#34;-_&#34;).decode(&#34;UTF8&#34;)[:-2]
+    return mmhash</code></pre>
+</details>
+</dd>
+<dt id="aqelib.moltools.tools.hash_str"><code class="name flex">
+<span>def <span class="ident">hash_str</span></span>(<span>inputfile: str, objtype: type = builtins.str) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def hash_str(inputfile: str, objtype: type = str) -&gt; str:
+    inputfile_hash = mmh3.hash128(inputfile)
+    if objtype == str:
+        return base64.b64encode(
+            inputfile_hash.to_bytes(
+                (inputfile_hash.bit_length() + 7) // 8, &#39;big&#39;),
+            altchars=b&#34;-_&#34;).decode(&#34;UTF8&#34;)[:-2]
+    return inputfile_hash</code></pre>
+</details>
+</dd>
+<dt id="aqelib.moltools.tools.hash_to_int"><code class="name flex">
+<span>def <span class="ident">hash_to_int</span></span>(<span>hash_val: str)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def hash_to_int(hash_val: str):
+    return int.from_bytes(base64.b64decode(f&#34;{hash_val}==&#34;), &#34;big&#34;)</code></pre>
+</details>
+</dd>
+<dt id="aqelib.moltools.tools.mol_to_dataframe"><code class="name flex">
+<span>def <span class="ident">mol_to_dataframe</span></span>(<span>mol: rdkit.Chem.rdchem.Mol) ‑> pandas.core.frame.DataFrame</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def mol_to_dataframe(mol: Chem.Mol) -&gt; pandas.DataFrame:
+    return pandas.json_normalize([normalize_mol_to_dict(mol)])</code></pre>
+</details>
+</dd>
+<dt id="aqelib.moltools.tools.mols_to_dataframe"><code class="name flex">
+<span>def <span class="ident">mols_to_dataframe</span></span>(<span>inputs: List[Tuple[str, rdkit.Chem.rdchem.Mol]]) ‑> pandas.core.frame.DataFrame</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def mols_to_dataframe(inputs: List[Tuple[str, Chem.Mol]]) -&gt; pandas.DataFrame:
+    return pandas.json_normalize(
+        map_parallel(normalize_mol_to_dict, inputs,
+                     max_parallel=multiprocessing.cpu_count()),
+        max_level=1)</code></pre>
+</details>
+</dd>
+<dt id="aqelib.moltools.tools.normalize_mol_to_dict"><code class="name flex">
+<span>def <span class="ident">normalize_mol_to_dict</span></span>(<span>inputs: Tuple[str, rdkit.Chem.rdchem.Mol]) ‑> dict</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def normalize_mol_to_dict(inputs: Tuple[str, Chem.Mol]) -&gt; dict:
+    input_smiles, mol = inputs
+    return {
+        &#34;input_SMILES&#34;: input_smiles,
+        &#34;SMILES&#34;: Chem.MolToSmiles(mol) if mol else mol,
+        &#34;mol&#34;: Chem.MolToJSON(mol) if mol else mol,
+        &#34;inchi&#34;: Chem.MolToInchi(mol) if mol else mol,
+        &#34;inchikey&#34;: Chem.MolToInchiKey(mol) if mol else mol,
+        &#34;log_p&#34;: Descriptors.MolLogP(mol) if mol else mol,
+        &#34;qed_rdkit&#34;: Descriptors.qed(mol) if mol else mol,
+        &#34;tpsa&#34;: Descriptors.TPSA(mol, includeSandP=True) if mol else mol,
+        &#34;mol_weight&#34;: Descriptors.MolWt(mol) if mol else mol,
+        &#34;num_h_donors&#34;: Descriptors.NumHDonors(mol) if mol else mol,
+        &#34;num_h_acceptors&#34;: Descriptors.NumHAcceptors(mol) if mol else mol,
+        &#34;num_rotatable_bonds&#34;: Descriptors.NumRotatableBonds(mol)
+        if mol else mol,
+        &#34;num_rings&#34;: rdMolDescriptors.CalcNumRings(mol) if mol else mol,
+        &#34;num_aromatic_rings&#34;: rdMolDescriptors.CalcNumAromaticRings(mol)
+        if mol else mol,
+        &#34;num_atoms&#34;: mol.GetNumAtoms() if mol else mol,
+        &#34;net_molecular_charge&#34;: Chem.GetFormalCharge(mol) if mol else mol
+    }</code></pre>
+</details>
+</dd>
+<dt id="aqelib.moltools.tools.round_jsonmol"><code class="name flex">
+<span>def <span class="ident">round_jsonmol</span></span>(<span>jsonmol: str) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def round_jsonmol(jsonmol: str) -&gt; str:
+    mol_dict = json.loads(jsonmol)
+    coords = []
+    for coord in mol_dict[&#34;molecules&#34;][0][&#34;conformers&#34;][0][&#34;coords&#34;]:
+        coord = [round(c, 2) for c in coord]
+        coords.append(coord)
+    mol_dict[&#34;molecules&#34;][0][&#34;conformers&#34;][0][&#34;coords&#34;] = coords
+    return json.dumps(mol_dict)</code></pre>
+</details>
+</dd>
+<dt id="aqelib.moltools.tools.smiles_to_mol"><code class="name flex">
+<span>def <span class="ident">smiles_to_mol</span></span>(<span>smiles: str) ‑> Tuple[str, rdkit.Chem.rdchem.Mol]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return the Chem.Mol of smile string.
+Chem.Mol object</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>smile</code></strong> :&ensp;<code>str</code></dt>
+<dd>input string</dd>
+</dl>
+<h2 id="returns">Returns:</h2>
+<p>Tuple[str, Chem.Mol]:
+Returning smiles in str and his associated mol in rdkit.Chem.Mol</p>
+<h2 id="raises">Raises</h2>
+<pre><code>Smiles cannot be None
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def smiles_to_mol(smiles: str) -&gt; Tuple[str, Chem.Mol]:
+    &#34;&#34;&#34;Return the Chem.Mol of smile string.
+    Chem.Mol object
+
+    Parameters
+    ----------
+
+    smile: str
+        input string
+
+    Returns:
+    ----------
+
+    Tuple[str, Chem.Mol]:
+        Returning smiles in str and his associated mol in rdkit.Chem.Mol
+
+    Raises
+    ------
+
+        Smiles cannot be None
+    &#34;&#34;&#34;
+    return (smiles, Chem.MolFromSmiles(smiles))</code></pre>
+</details>
+</dd>
+<dt id="aqelib.moltools.tools.smiles_to_standard_mol"><code class="name flex">
+<span>def <span class="ident">smiles_to_standard_mol</span></span>(<span>smile: str) ‑> rdkit.Chem.rdchem.Mol</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def smiles_to_standard_mol(smile: str) -&gt; Chem.Mol:
+    return chembl_standardize(Chem.MolFromSmiles(smile))</code></pre>
+</details>
+</dd>
+<dt id="aqelib.moltools.tools.standardize_mol"><code class="name flex">
+<span>def <span class="ident">standardize_mol</span></span>(<span>inputs: Tuple[str, rdkit.Chem.rdchem.Mol]) ‑> Tuple[str, rdkit.Chem.rdchem.Mol]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def standardize_mol(inputs: Tuple[str, Chem.Mol]) -&gt; Tuple[str, Chem.Mol]:
+    return (inputs[0],
+            chembl_standardize(inputs[1]) if inputs[1] else inputs[1])</code></pre>
+</details>
+</dd>
+<dt id="aqelib.moltools.tools.standardize_mols"><code class="name flex">
+<span>def <span class="ident">standardize_mols</span></span>(<span>mols: List[Tuple[str, rdkit.Chem.rdchem.Mol]]) ‑> List[Tuple[str, rdkit.Chem.rdchem.Mol]]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def standardize_mols(mols: List[Tuple[str, Chem.Mol]]) \
+        -&gt; List[Tuple[str, Chem.Mol]]:
+    return map_parallel(standardize_mol, mols,
+                        max_parallel=multiprocessing.cpu_count())</code></pre>
+</details>
+</dd>
+<dt id="aqelib.moltools.tools.tautomer_distribution"><code class="name flex">
+<span>def <span class="ident">tautomer_distribution</span></span>(<span>mols: List[rdkit.Chem.rdchem.Mol]) ‑> pandas.core.frame.DataFrame</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Compute tautomer distribution of mols list
+return pandas.DataFrame</p>
+<ul>
+<li>
+<p>Parameters:
+mols
+(List[Chem.Mol]): Up dataframe</p>
+</li>
+<li>
+<p>Returns:
+pandas.DataFrame: Returning one pandas.DataFrame</p>
+</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def tautomer_distribution(mols: List[Chem.Mol]) -&gt; pandas.DataFrame:
+    &#34;&#34;&#34;Compute tautomer distribution of mols list
+    return pandas.DataFrame
+
+    - Parameters:
+    mols        (List[Chem.Mol]): Up dataframe
+
+    - Returns:
+    pandas.DataFrame: Returning one pandas.DataFrame
+
+    &#34;&#34;&#34;
+    return reduce(concat_dataframe,
+                  map_parallel(cxcalc_dominant_tautomer_distribution,
+                               mols, max_parallel=multiprocessing.cpu_count()))</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="aqelib.moltools" href="index.html">aqelib.moltools</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="aqelib.moltools.tools.check_mol" href="#aqelib.moltools.tools.check_mol">check_mol</a></code></li>
+<li><code><a title="aqelib.moltools.tools.enumerate_stereoisomers" href="#aqelib.moltools.tools.enumerate_stereoisomers">enumerate_stereoisomers</a></code></li>
+<li><code><a title="aqelib.moltools.tools.generate_conformers" href="#aqelib.moltools.tools.generate_conformers">generate_conformers</a></code></li>
+<li><code><a title="aqelib.moltools.tools.hash_mol" href="#aqelib.moltools.tools.hash_mol">hash_mol</a></code></li>
+<li><code><a title="aqelib.moltools.tools.hash_str" href="#aqelib.moltools.tools.hash_str">hash_str</a></code></li>
+<li><code><a title="aqelib.moltools.tools.hash_to_int" href="#aqelib.moltools.tools.hash_to_int">hash_to_int</a></code></li>
+<li><code><a title="aqelib.moltools.tools.mol_to_dataframe" href="#aqelib.moltools.tools.mol_to_dataframe">mol_to_dataframe</a></code></li>
+<li><code><a title="aqelib.moltools.tools.mols_to_dataframe" href="#aqelib.moltools.tools.mols_to_dataframe">mols_to_dataframe</a></code></li>
+<li><code><a title="aqelib.moltools.tools.normalize_mol_to_dict" href="#aqelib.moltools.tools.normalize_mol_to_dict">normalize_mol_to_dict</a></code></li>
+<li><code><a title="aqelib.moltools.tools.round_jsonmol" href="#aqelib.moltools.tools.round_jsonmol">round_jsonmol</a></code></li>
+<li><code><a title="aqelib.moltools.tools.smiles_to_mol" href="#aqelib.moltools.tools.smiles_to_mol">smiles_to_mol</a></code></li>
+<li><code><a title="aqelib.moltools.tools.smiles_to_standard_mol" href="#aqelib.moltools.tools.smiles_to_standard_mol">smiles_to_standard_mol</a></code></li>
+<li><code><a title="aqelib.moltools.tools.standardize_mol" href="#aqelib.moltools.tools.standardize_mol">standardize_mol</a></code></li>
+<li><code><a title="aqelib.moltools.tools.standardize_mols" href="#aqelib.moltools.tools.standardize_mols">standardize_mols</a></code></li>
+<li><code><a title="aqelib.moltools.tools.tautomer_distribution" href="#aqelib.moltools.tools.tautomer_distribution">tautomer_distribution</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

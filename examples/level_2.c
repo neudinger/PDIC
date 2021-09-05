@@ -9,7 +9,7 @@
  * -----
  * Licenses: EUPL
  * -----
- * Copyright 2021 - 2021 NinjaTech
+ * Copyright 2021 - 2021 neudinger
  */
 
 #pragma pdi on
@@ -18,8 +18,12 @@ typedef struct Var8
 {
 #pragma pdi type : int64
     int my_int;
+    char char_tab[20];
     char my_char;
 } var;
+
+#pragma pdi size:[42]
+int **array_of_pointer_of_array[21];
 
 var my_var;
 

@@ -1,0 +1,9 @@
+{
+	"name": "PDIC container dev",
+	"dockerFile": "Dockerfile",
+	"extensions": [
+		"ms-python.python",
+		"austin.code-gnu-global",
+		"ms-vscode.cmake-tools"
+	]
+}

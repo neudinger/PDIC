@@ -1,0 +1,1550 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>aqelib.molecular_mechanics.utils API documentation</title>
+<meta name="description" content="Copyright (C) Aqemia 2020 - All rights reserved." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>aqelib.molecular_mechanics.utils</code></h1>
+</header>
+<section id="section-intro">
+<p>Copyright (C) Aqemia 2020 - All rights reserved.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Copyright (C) Aqemia 2020 - All rights reserved.&#34;&#34;&#34;
+import os
+import subprocess
+import parmed
+import numpy as np
+from rdkit import Chem
+from ..loggers import chemlog
+
+logger = chemlog.getLogger(__name__)
+
+
+def parametrize_ligand(dockedmol: object,  # str | Chem.Mol
+                       workdir: str) -&gt; object:
+    writer = Chem.SDWriter(os.path.join(workdir, &#34;ligand.sdf&#34;))
+    if isinstance(dockedmol, str):
+        dockedmol: Chem.Mol = Chem.JSONToMols(dockedmol)[0]
+    writer.write(dockedmol)
+    writer.flush()
+
+    antechamber_cmd = [&#34;antechamber&#34;, &#34;-fi&#34;, &#34;sdf&#34;, &#34;-fo&#34;, &#34;mol2&#34;,
+                       &#34;-i&#34;, os.path.join(workdir, &#34;ligand.sdf&#34;),
+                       &#34;-o&#34;, os.path.join(workdir, &#34;ligand.mol2&#34;),
+                       &#34;-nc&#34;, str(Chem.GetFormalCharge(dockedmol)),
+                       &#34;-c&#34;, &#34;bcc&#34;]
+    logger.info(f&#34;antechamber_cmd is {antechamber_cmd}&#34;)
+    process = subprocess.Popen(
+        antechamber_cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        cwd=workdir)
+    stdout, stderr = process.communicate()
+    if stderr:
+        process.kill()
+        logger.error(&#34;&#34;&#34;
+        |- Cannot Antechamber : command error -|
+        |- Antechamber: STDERR -|
+        %s
+        |- Antechamber: STDOUT -|
+        %s
+        &#34;&#34;&#34;, bytes.decode(stderr, &#34;ascii&#34;), bytes.decode(stdout, &#34;ascii&#34;))
+    process.terminate()
+
+    parmchk2_cmd = [&#34;parmchk2&#34;, &#34;-f&#34;, &#34;mol2&#34;,
+                    &#34;-i&#34;, os.path.join(workdir, &#34;ligand.mol2&#34;),
+                    &#34;-o&#34;, os.path.join(workdir, &#34;ligand.frcmod&#34;)
+                    ]
+    logger.info(f&#34;parmchk2_cmd is {parmchk2_cmd}&#34;)
+
+    process = subprocess.Popen(
+        parmchk2_cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        cwd=workdir)
+
+    stdout, stderr = process.communicate()
+    if stderr:
+        process.kill()
+        logger.error(&#34;&#34;&#34;
+        |- Cannot Parmchk2 : command error -|
+        |- Parmchk2: STDERR -|
+        %s
+        |- Parmchk2: STDOUT -|
+        %s
+        &#34;&#34;&#34;, bytes.decode(stderr, &#34;ascii&#34;), bytes.decode(stdout, &#34;ascii&#34;))
+    process.terminate()
+
+    f = open(os.path.join(workdir, &#34;tleap.in&#34;), &#34;w&#34;)
+    f.write(&#34;&#34;&#34;source leaprc.gaff
+ligand = loadmol2 ligand.mol2
+loadamberparams ligand.frcmod
+saveamberparm ligand ligand.prmtop ligand.rst7
+quit&#34;&#34;&#34;)
+    f.close()
+
+    tleap_cmd = [&#34;tleap&#34;, &#34;-f&#34;, os.path.join(workdir, &#34;tleap.in&#34;)]
+    logger.info(f&#34;tleap_cmd is {tleap_cmd}&#34;)
+    process = subprocess.Popen(
+        tleap_cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        cwd=workdir)
+
+    stdout, stderr = process.communicate()
+    if stderr:
+        process.kill()
+        logger.error(&#34;&#34;&#34;
+        |- Cannot Tleap : command error -|
+        |- Tleap: STDERR -|
+        %s
+        |- Tleap: STDOUT -|
+        %s
+        &#34;&#34;&#34;, bytes.decode(stderr, &#34;ascii&#34;), bytes.decode(stdout, &#34;ascii&#34;))
+    process.terminate()
+
+    ligand = parmed.load_file(os.path.join(workdir, &#34;ligand.prmtop&#34;),
+                              os.path.join(workdir, &#34;ligand.rst7&#34;))
+    for res in ligand.residues:
+        res.name = &#39;LIG&#39;
+
+    return ligand
+
+
+def parametrize_protein(protein_pdb_path: str, workdir: str) -&gt; object:
+    protein_pdb_clean_path = os.path.join(workdir, &#34;protein_clean.pdb&#34;)
+    pdb_to_pdbclean_cmd = [&#34;pdb4amber&#34;,
+                           &#34;-i&#34;, protein_pdb_path,
+                           &#34;-o&#34;, protein_pdb_clean_path]
+    logger.info(f&#34;pdb4amber is {pdb_to_pdbclean_cmd}&#34;)
+    process = subprocess.Popen(
+        pdb_to_pdbclean_cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        cwd=workdir)
+    stdout, stderr = process.communicate()
+    if stderr:
+        process.kill()
+        logger.error(&#34;&#34;&#34;
+        |- Cannot pdb4amber : command error -|
+        |- pdb4amber: STDERR -|
+        %s
+        |- pdb4amber: STDOUT -|
+        %s
+        &#34;&#34;&#34;, bytes.decode(stderr, &#34;ascii&#34;), bytes.decode(stdout, &#34;ascii&#34;))
+    process.terminate()
+
+    file = open(os.path.join(workdir, &#34;tleap.in&#34;), &#34;a&#34;)
+    file.write(f&#34;&#34;&#34;source leaprc.protein.ff14SB
+source leaprc.gaff
+source leaprc.water.tip3p
+source leaprc.phosaa10
+set default nocenter on
+mol = loadpdb {protein_pdb_clean_path}
+saveamberparm mol protein.prmtop protein.rst7
+quit&#34;&#34;&#34;)
+    file.close()
+    tleap_cmd = [&#34;tleap&#34;, &#34;-f&#34;, os.path.join(workdir, &#34;tleap.in&#34;)]
+    logger.info(f&#34;tleap_cmd is {tleap_cmd}&#34;)
+    process = subprocess.Popen(
+        tleap_cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        cwd=workdir)
+
+    stdout, stderr = process.communicate()
+    if stderr:
+        process.kill()
+        logger.error(&#34;&#34;&#34;
+        |- Cannot Tleap : command error -|
+        |- Tleap: STDERR -|
+        %s
+        |- Tleap: STDOUT -|
+        %s
+        &#34;&#34;&#34;, bytes.decode(stderr, &#34;ascii&#34;), bytes.decode(stdout, &#34;ascii&#34;))
+    process.terminate()
+    protein = parmed.load_file(os.path.join(workdir, &#34;protein.prmtop&#34;),
+                               os.path.join(workdir, &#34;protein.rst7&#34;))
+    return protein
+
+
+def create_dict_per_atom(parmed_pose: str) -&gt; list:
+    &#34;&#34;&#34;
+    Create a dictionary for each atom in a molecule
+    from a topology file and a coordinate file
+
+    Parameters
+    ----------
+
+    topology_file : str
+        Topology file of the molecule
+    coordinate_file : str
+        Coordinate file of the molecule
+    parmed_pose : parmed object
+
+    Returns
+    -------
+
+    atoms : list
+    list of atom dictionaries containing :
+
+        - charge
+        - atomic_number
+        - atom_reference
+        - sigma
+        - epsilon
+        - x_coord
+        - y_coord
+        - z_coord
+
+    &#34;&#34;&#34;
+
+    number_of_atoms = parmed_pose.ptr(&#39;NATOM&#39;)
+    charges = parmed_pose.parm_data[&#39;CHARGE&#39;]
+    atomic_numbers = parmed_pose.parm_data[&#39;ATOMIC_NUMBER&#39;]
+    atom_reference = parmed_pose.parm_data[&#39;ATOM_NAME&#39;]
+
+    kcal_to_kj = 4.184
+    sigma_types = np.array(parmed_pose.LJ_radius) * 2.0 / \
+        (2 ** (1 / 6))  # convert LJ radius to sigma
+    epsilon_types = np.array(parmed_pose.LJ_depth) * \
+        kcal_to_kj  # convert kcal/mol to kJ/mol
+
+    sigma = []
+    epsilon = []
+    for idx in parmed_pose.parm_data[&#39;ATOM_TYPE_INDEX&#39;]:
+        sigma.append(sigma_types[idx - 1])
+        epsilon.append(epsilon_types[idx - 1])
+
+    coordinates = parmed_pose.coordinates
+
+    x_coords = coordinates[:, 0]
+    y_coords = coordinates[:, 1]
+    z_coords = coordinates[:, 2]
+
+    atoms = []
+    for i in range(number_of_atoms):
+        atom_dict = {
+            &#34;charge&#34;: charges[i],
+            &#34;atomic_number&#34;: atomic_numbers[i],
+            &#34;atom_reference&#34;: atom_reference[i],
+            &#34;sigma&#34;: sigma[i],
+            &#34;epsilon&#34;: epsilon[i],
+            &#34;x_coord&#34;: x_coords[i],
+            &#34;y_coord&#34;: y_coords[i],
+            &#34;z_coord&#34;: z_coords[i]
+        }
+        atoms.append(atom_dict)
+
+    return atoms
+
+
+def calculate_sigma_ij(atoms_i, atoms_j, method=&#39;LB&#39;):
+    &#34;&#34;&#34;
+        Returns sigma_ij value by applying Lorentz-Berthelot
+        (default) or geometric combining rule
+
+    Parameters
+    ----------
+
+    atoms_i : dict
+        dictionary containing properties of atom I
+    atoms_j : dict
+        dictionary containing properties of atom J
+    method : str, optional
+        Method name for calculating sigma_ij.
+        Only &#34;LB&#34; and &#34;geometric&#34; are supported currently.
+        The default is &#39;LB&#39;.
+
+    Returns
+    -------
+
+    sigma_ij : float
+        value of sigma_ij
+
+    &#34;&#34;&#34;
+    if method == &#39;LB&#39;:
+        sigma_ij = (atoms_i[&#39;sigma&#39;] + atoms_j[&#39;sigma&#39;]) / 2
+    elif method == &#39;geometric&#39;:
+        sigma_ij = np.sqrt(atoms_i[&#39;sigma&#39;] * atoms_j[&#39;sigma&#39;])
+    else:
+        raise RuntimeError(
+            f&#34;Invalid method for computing LJ sigma parameters: {method}&#34;)
+
+    return sigma_ij
+
+
+def calculate_epsilon_ij(atoms_i, atoms_j, method=&#39;LB&#39;):
+    &#34;&#34;&#34;
+    Returns epsilon_ij value by applying Lorentz-Berthelot
+    (default) combining rule
+
+    Parameters
+    ----------
+
+    atoms_a : dict
+        dictionary containing properties of atom I
+    atoms_b : dict
+        dictionary containing properties of atom J
+    method : str, optional
+        Method name for calculating epsilon_ij.
+        Only &#34;LB&#34; is supported currently.
+        The default is &#39;LB&#39;.
+
+    Returns
+    -------
+
+    epsilon_ij : float
+        value of epsilon_ij
+
+    &#34;&#34;&#34;
+    if method == &#39;LB&#39;:
+        epsilon_ij = np.sqrt(atoms_i[&#39;epsilon&#39;] * atoms_j[&#39;epsilon&#39;])
+    else:
+        raise RuntimeError(
+            f&#34;Invalid method for computing LJ sigma parameters: {method}&#34;)
+    return epsilon_ij
+
+
+def get_mol_coords(molecule):
+    &#34;&#34;&#34;
+    Return list of atom coordinates:
+
+    - one list for x_coords,
+    - one y_coords,
+    - one for z_coords
+
+    Parameters
+    ----------
+
+    molecule : list
+        list of atoms dictionary containing properties of atom i
+
+    Returns
+    -------
+    x_coords : list
+    y_coords : list
+    z_coords : list
+
+    &#34;&#34;&#34;
+    xyz_coords = np.array(
+        [[atom[&#34;x_coord&#34;], atom[&#34;y_coord&#34;], atom[&#34;z_coord&#34;]]
+         for atom in molecule])
+
+    return xyz_coords
+
+
+def get_mol_charges(molecule: list) -&gt; np.array:
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+
+    molecule : list
+        list of atoms dictionary containing properties of atom i
+
+    Returns
+    -------
+
+    charges: np.array
+    &#34;&#34;&#34;
+
+    charges = np.array([atom[&#34;charge&#34;] for atom in molecule])
+
+    return charges
+
+
+def get_mol_epsilon(molecule: list) -&gt; np.array:
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+
+    molecule : list of atoms dictionary containing properties of atom i
+
+    Returns
+    -------
+
+    epsilons
+    &#34;&#34;&#34;
+
+    epsilons = np.array([atom[&#34;epsilon&#34;] for atom in molecule])
+
+    return epsilons
+
+
+def get_mol_sigma(molecule):
+    &#34;&#34;&#34;
+    Return list of atom sigmas
+
+    Parameters
+    ----------
+
+    molecule : list
+        list of atoms dictionary containing properties of atom i
+
+    Returns
+    -------
+
+        sigmas : list
+    &#34;&#34;&#34;
+
+    sigmas = np.array([atom[&#34;sigma&#34;] for atom in molecule])
+
+    return sigmas
+
+
+def compute_distance_matrix(molecule_a, molecule_b):
+    from scipy.spatial import distance_matrix
+    &#34;&#34;&#34;
+    Generate a np.array
+    containing the distance between each atoms of two molecules
+    Distance is calculated with scipy.spatial.distance_matrix
+
+    Parameters
+    ----------
+
+    molecule_a :list
+        list of atoms dictionary containing properties of atom i
+    molecule_b : list
+        list of atoms dictionary containing properties of atom i
+
+    Returns
+    -------
+
+    molecule_ab_distance_matrix : np.array
+        shape : len(molecule_a) x len(molecule_b)
+    &#34;&#34;&#34;
+    molecule_a_coords = get_mol_coords(molecule_a)
+    molecule_b_coords = get_mol_coords(molecule_b)
+    molecule_ab_distance_matrix = distance_matrix(
+        molecule_a_coords, molecule_b_coords)
+
+    return molecule_ab_distance_matrix
+
+
+def compute_electrostatic_energy(molecule_a: list, molecule_b: list,
+                                 relative_permittivity: float = 1) -&gt; float:
+    &#34;&#34;&#34;
+    Computes electrostatic energy between two molecules.
+
+    Parameters
+    ----------
+
+    molecule_a : list
+        list of atoms dictionaries containing properties of atom i.
+    molecule_b : list
+        list of atoms dictionaries containing properties of atom i.
+    relative_permittivity : list
+        The default is 1.
+
+    Returns
+    -------
+
+    electrostatic_energy_kcal:
+    the electrostatic energy between two molecules, in kcal/mol
+    &#34;&#34;&#34;
+    n_avogadro = 6.02214076e23
+    electron_volt = 1.60217662e-19
+    epsilon0 = 8.85418782e-12
+    angstrom_to_meter = 1.e-10
+    kjoules_to_kcal = 0.239006
+
+    permittivity = (relative_permittivity * epsilon0 *
+                    angstrom_to_meter * 1000) / n_avogadro
+
+    molecule_ab_distance_matrix = compute_distance_matrix(
+        molecule_a, molecule_b)
+
+    molecule_a_charges = get_mol_charges(molecule_a)
+    molecule_b_charges = get_mol_charges(molecule_b)
+
+    qiqj_matrix = (molecule_a_charges.reshape((len(molecule_a_charges), 1))
+                   * molecule_b_charges.reshape((1, len(molecule_b_charges))))
+    qiqj_matrix = qiqj_matrix * electron_volt * electron_volt
+
+    electrostatic_energy = np.sum(
+        qiqj_matrix / (molecule_ab_distance_matrix * 4 * np.pi * permittivity))
+
+    electrostatic_energy_kcal = float(electrostatic_energy * kjoules_to_kcal)
+
+    return electrostatic_energy_kcal
+
+
+def compute_lennard_jones_energy(molecule_a: list, molecule_b: list) -&gt; float:
+    &#34;&#34;&#34;
+    Computes Lennard-Jones energy between two molecules.
+
+    Parameters
+    ----------
+
+    molecule_a : list
+        list of atoms dictionary containing properties of atom i.
+    molecule_b : list
+        list of atoms dictionary containing properties of atom i.
+
+    Returns
+    -------
+
+    lennard_jones_energy_kcal:
+    the Lennard-Jones energy between two molecules, in kcal/mol
+
+    &#34;&#34;&#34;
+    kjoules_to_kcal = 0.239006
+
+    molecule_ab_distance_matrix = compute_distance_matrix(
+        molecule_a, molecule_b)
+
+    molecule_a_epsilon = get_mol_epsilon(molecule_a)
+    molecule_b_epsilon = get_mol_epsilon(molecule_b)
+    epsilon_ij_matrix = np.sqrt(
+        molecule_a_epsilon.reshape((len(molecule_a_epsilon), 1))
+        * molecule_b_epsilon.reshape((1, len(molecule_b_epsilon))))
+
+    molecule_a_sigma = get_mol_sigma(molecule_a)
+    molecule_b_sigma = get_mol_sigma(molecule_b)
+    sigma_ij_matrix = (molecule_a_sigma.reshape((len(molecule_a_sigma), 1))
+                       + molecule_b_sigma.reshape((1, len(molecule_b_sigma)))
+                       ) / 2
+
+    sigma_distance_matrix_6 = (
+        sigma_ij_matrix / molecule_ab_distance_matrix) ** 6
+    lennard_jones_energy = np.sum(
+        4 * epsilon_ij_matrix * sigma_distance_matrix_6 *
+        (sigma_distance_matrix_6 - 1))
+
+    lennard_jones_energy_kcal = float(lennard_jones_energy * kjoules_to_kcal)
+
+    return lennard_jones_energy_kcal
+
+
+def compute_interaction_energy(molecule_a: list,
+                               molecule_b: list) -&gt; (float, float, float):
+    &#34;&#34;&#34;
+    Computes interaction energy between two molecules.
+
+    Parameters
+    ----------
+
+    molecule_a : list
+        list of atoms dictionary containing properties of atom i.
+    molecule_b : list
+        list of atoms dictionary containing properties of atom i.
+
+    Returns
+    -------
+
+    interaction_energy, lennard_jones_energy, electrostatic_energy:
+    the interaction energies between two molecules in kcal/mol
+    &#34;&#34;&#34;
+    lennard_jones_energy = compute_lennard_jones_energy(molecule_a, molecule_b)
+    electrostatic_energy = compute_electrostatic_energy(molecule_a, molecule_b)
+    interaction_energy = lennard_jones_energy + electrostatic_energy
+
+    return interaction_energy, lennard_jones_energy, electrostatic_energy
+
+
+def compute_eint_from_top_crd(parmed_pose_l,
+                              parmed_pose_p) -&gt; (float, float, float):
+    &#34;&#34;&#34;
+    Computes interaction energy between two molecules
+
+    Parameters
+    ----------
+    parmed_pose_l : object
+        parmed object
+    parmed_pose_p : object
+        parmed object
+
+    Returns
+    -------
+
+    compute_interaction_energy: tuple
+    The interaction energy between two molecules, in kcal/mol
+    &#34;&#34;&#34;
+    ligand = create_dict_per_atom(parmed_pose_l)
+    prot = create_dict_per_atom(parmed_pose_p)
+    logger.info(&#34;Calculated Eint&#34;)
+    e_int, e_lj, e_elec = compute_interaction_energy(ligand, prot)
+    return e_int, e_lj, e_elec
+
+
+def get_etot(system_parmed) -&gt; float:
+    import sander
+    &#34;&#34;&#34;
+    get total energy with sander api
+
+    Parameters
+    ----------
+
+    system_parmed : parmed Object
+
+    Returns
+    -------
+
+    e_tot: float
+    &#34;&#34;&#34;
+    system_parmed.save(&#34;temp.prmtop&#34;)
+
+    sander_runner = sander
+    opts = sander_runner.pme_input()
+    opts.ntb = 1
+    opts.ntc = 1
+    opts.ntf = 1
+    opts.cut = 8.0
+    opts.igb = 0
+    if sander_runner.is_setup():
+        sander_runner.cleanup()
+    with sander_runner.setup(&#34;temp.prmtop&#34;, system_parmed.coordinates,
+                             [100, 100, 100, 90, 90, 90], opts):
+        e, f = sander_runner.energy_forces()
+    os.remove(&#34;temp.prmtop&#34;)
+    return e.tot</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="aqelib.molecular_mechanics.utils.calculate_epsilon_ij"><code class="name flex">
+<span>def <span class="ident">calculate_epsilon_ij</span></span>(<span>atoms_i, atoms_j, method='LB')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns epsilon_ij value by applying Lorentz-Berthelot
+(default) combining rule</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>atoms_a</code></strong> :&ensp;<code>dict</code></dt>
+<dd>dictionary containing properties of atom I</dd>
+<dt><strong><code>atoms_b</code></strong> :&ensp;<code>dict</code></dt>
+<dd>dictionary containing properties of atom J</dd>
+<dt><strong><code>method</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Method name for calculating epsilon_ij.
+Only "LB" is supported currently.
+The default is 'LB'.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>epsilon_ij</code></strong> :&ensp;<code>float</code></dt>
+<dd>value of epsilon_ij</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def calculate_epsilon_ij(atoms_i, atoms_j, method=&#39;LB&#39;):
+    &#34;&#34;&#34;
+    Returns epsilon_ij value by applying Lorentz-Berthelot
+    (default) combining rule
+
+    Parameters
+    ----------
+
+    atoms_a : dict
+        dictionary containing properties of atom I
+    atoms_b : dict
+        dictionary containing properties of atom J
+    method : str, optional
+        Method name for calculating epsilon_ij.
+        Only &#34;LB&#34; is supported currently.
+        The default is &#39;LB&#39;.
+
+    Returns
+    -------
+
+    epsilon_ij : float
+        value of epsilon_ij
+
+    &#34;&#34;&#34;
+    if method == &#39;LB&#39;:
+        epsilon_ij = np.sqrt(atoms_i[&#39;epsilon&#39;] * atoms_j[&#39;epsilon&#39;])
+    else:
+        raise RuntimeError(
+            f&#34;Invalid method for computing LJ sigma parameters: {method}&#34;)
+    return epsilon_ij</code></pre>
+</details>
+</dd>
+<dt id="aqelib.molecular_mechanics.utils.calculate_sigma_ij"><code class="name flex">
+<span>def <span class="ident">calculate_sigma_ij</span></span>(<span>atoms_i, atoms_j, method='LB')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns sigma_ij value by applying Lorentz-Berthelot
+(default) or geometric combining rule</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>atoms_i</code></strong> :&ensp;<code>dict</code></dt>
+<dd>dictionary containing properties of atom I</dd>
+<dt><strong><code>atoms_j</code></strong> :&ensp;<code>dict</code></dt>
+<dd>dictionary containing properties of atom J</dd>
+<dt><strong><code>method</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Method name for calculating sigma_ij.
+Only "LB" and "geometric" are supported currently.
+The default is 'LB'.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>sigma_ij</code></strong> :&ensp;<code>float</code></dt>
+<dd>value of sigma_ij</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def calculate_sigma_ij(atoms_i, atoms_j, method=&#39;LB&#39;):
+    &#34;&#34;&#34;
+        Returns sigma_ij value by applying Lorentz-Berthelot
+        (default) or geometric combining rule
+
+    Parameters
+    ----------
+
+    atoms_i : dict
+        dictionary containing properties of atom I
+    atoms_j : dict
+        dictionary containing properties of atom J
+    method : str, optional
+        Method name for calculating sigma_ij.
+        Only &#34;LB&#34; and &#34;geometric&#34; are supported currently.
+        The default is &#39;LB&#39;.
+
+    Returns
+    -------
+
+    sigma_ij : float
+        value of sigma_ij
+
+    &#34;&#34;&#34;
+    if method == &#39;LB&#39;:
+        sigma_ij = (atoms_i[&#39;sigma&#39;] + atoms_j[&#39;sigma&#39;]) / 2
+    elif method == &#39;geometric&#39;:
+        sigma_ij = np.sqrt(atoms_i[&#39;sigma&#39;] * atoms_j[&#39;sigma&#39;])
+    else:
+        raise RuntimeError(
+            f&#34;Invalid method for computing LJ sigma parameters: {method}&#34;)
+
+    return sigma_ij</code></pre>
+</details>
+</dd>
+<dt id="aqelib.molecular_mechanics.utils.compute_distance_matrix"><code class="name flex">
+<span>def <span class="ident">compute_distance_matrix</span></span>(<span>molecule_a, molecule_b)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compute_distance_matrix(molecule_a, molecule_b):
+    from scipy.spatial import distance_matrix
+    &#34;&#34;&#34;
+    Generate a np.array
+    containing the distance between each atoms of two molecules
+    Distance is calculated with scipy.spatial.distance_matrix
+
+    Parameters
+    ----------
+
+    molecule_a :list
+        list of atoms dictionary containing properties of atom i
+    molecule_b : list
+        list of atoms dictionary containing properties of atom i
+
+    Returns
+    -------
+
+    molecule_ab_distance_matrix : np.array
+        shape : len(molecule_a) x len(molecule_b)
+    &#34;&#34;&#34;
+    molecule_a_coords = get_mol_coords(molecule_a)
+    molecule_b_coords = get_mol_coords(molecule_b)
+    molecule_ab_distance_matrix = distance_matrix(
+        molecule_a_coords, molecule_b_coords)
+
+    return molecule_ab_distance_matrix</code></pre>
+</details>
+</dd>
+<dt id="aqelib.molecular_mechanics.utils.compute_eint_from_top_crd"><code class="name flex">
+<span>def <span class="ident">compute_eint_from_top_crd</span></span>(<span>parmed_pose_l, parmed_pose_p) ‑> (<class 'float'>, <class 'float'>, <class 'float'>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Computes interaction energy between two molecules</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>parmed_pose_l</code></strong> :&ensp;<code>object</code></dt>
+<dd>parmed object</dd>
+<dt><strong><code>parmed_pose_p</code></strong> :&ensp;<code>object</code></dt>
+<dd>parmed object</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>compute_interaction_energy</code></strong> :&ensp;<code>tuple</code></dt>
+<dd>&nbsp;</dd>
+<dt><code>The interaction energy between two molecules, in kcal/mol</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compute_eint_from_top_crd(parmed_pose_l,
+                              parmed_pose_p) -&gt; (float, float, float):
+    &#34;&#34;&#34;
+    Computes interaction energy between two molecules
+
+    Parameters
+    ----------
+    parmed_pose_l : object
+        parmed object
+    parmed_pose_p : object
+        parmed object
+
+    Returns
+    -------
+
+    compute_interaction_energy: tuple
+    The interaction energy between two molecules, in kcal/mol
+    &#34;&#34;&#34;
+    ligand = create_dict_per_atom(parmed_pose_l)
+    prot = create_dict_per_atom(parmed_pose_p)
+    logger.info(&#34;Calculated Eint&#34;)
+    e_int, e_lj, e_elec = compute_interaction_energy(ligand, prot)
+    return e_int, e_lj, e_elec</code></pre>
+</details>
+</dd>
+<dt id="aqelib.molecular_mechanics.utils.compute_electrostatic_energy"><code class="name flex">
+<span>def <span class="ident">compute_electrostatic_energy</span></span>(<span>molecule_a: list, molecule_b: list, relative_permittivity: float = 1) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Computes electrostatic energy between two molecules.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>molecule_a</code></strong> :&ensp;<code>list</code></dt>
+<dd>list of atoms dictionaries containing properties of atom i.</dd>
+<dt><strong><code>molecule_b</code></strong> :&ensp;<code>list</code></dt>
+<dd>list of atoms dictionaries containing properties of atom i.</dd>
+<dt><strong><code>relative_permittivity</code></strong> :&ensp;<code>list</code></dt>
+<dd>The default is 1.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>electrostatic_energy_kcal:</code></dt>
+<dd>&nbsp;</dd>
+<dt><code>the electrostatic energy between two molecules, in kcal/mol</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compute_electrostatic_energy(molecule_a: list, molecule_b: list,
+                                 relative_permittivity: float = 1) -&gt; float:
+    &#34;&#34;&#34;
+    Computes electrostatic energy between two molecules.
+
+    Parameters
+    ----------
+
+    molecule_a : list
+        list of atoms dictionaries containing properties of atom i.
+    molecule_b : list
+        list of atoms dictionaries containing properties of atom i.
+    relative_permittivity : list
+        The default is 1.
+
+    Returns
+    -------
+
+    electrostatic_energy_kcal:
+    the electrostatic energy between two molecules, in kcal/mol
+    &#34;&#34;&#34;
+    n_avogadro = 6.02214076e23
+    electron_volt = 1.60217662e-19
+    epsilon0 = 8.85418782e-12
+    angstrom_to_meter = 1.e-10
+    kjoules_to_kcal = 0.239006
+
+    permittivity = (relative_permittivity * epsilon0 *
+                    angstrom_to_meter * 1000) / n_avogadro
+
+    molecule_ab_distance_matrix = compute_distance_matrix(
+        molecule_a, molecule_b)
+
+    molecule_a_charges = get_mol_charges(molecule_a)
+    molecule_b_charges = get_mol_charges(molecule_b)
+
+    qiqj_matrix = (molecule_a_charges.reshape((len(molecule_a_charges), 1))
+                   * molecule_b_charges.reshape((1, len(molecule_b_charges))))
+    qiqj_matrix = qiqj_matrix * electron_volt * electron_volt
+
+    electrostatic_energy = np.sum(
+        qiqj_matrix / (molecule_ab_distance_matrix * 4 * np.pi * permittivity))
+
+    electrostatic_energy_kcal = float(electrostatic_energy * kjoules_to_kcal)
+
+    return electrostatic_energy_kcal</code></pre>
+</details>
+</dd>
+<dt id="aqelib.molecular_mechanics.utils.compute_interaction_energy"><code class="name flex">
+<span>def <span class="ident">compute_interaction_energy</span></span>(<span>molecule_a: list, molecule_b: list) ‑> (<class 'float'>, <class 'float'>, <class 'float'>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Computes interaction energy between two molecules.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>molecule_a</code></strong> :&ensp;<code>list</code></dt>
+<dd>list of atoms dictionary containing properties of atom i.</dd>
+<dt><strong><code>molecule_b</code></strong> :&ensp;<code>list</code></dt>
+<dd>list of atoms dictionary containing properties of atom i.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>interaction_energy, lennard_jones_energy, electrostatic_energy:</code></dt>
+<dd>&nbsp;</dd>
+<dt><code>the interaction energies between two molecules in kcal/mol</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compute_interaction_energy(molecule_a: list,
+                               molecule_b: list) -&gt; (float, float, float):
+    &#34;&#34;&#34;
+    Computes interaction energy between two molecules.
+
+    Parameters
+    ----------
+
+    molecule_a : list
+        list of atoms dictionary containing properties of atom i.
+    molecule_b : list
+        list of atoms dictionary containing properties of atom i.
+
+    Returns
+    -------
+
+    interaction_energy, lennard_jones_energy, electrostatic_energy:
+    the interaction energies between two molecules in kcal/mol
+    &#34;&#34;&#34;
+    lennard_jones_energy = compute_lennard_jones_energy(molecule_a, molecule_b)
+    electrostatic_energy = compute_electrostatic_energy(molecule_a, molecule_b)
+    interaction_energy = lennard_jones_energy + electrostatic_energy
+
+    return interaction_energy, lennard_jones_energy, electrostatic_energy</code></pre>
+</details>
+</dd>
+<dt id="aqelib.molecular_mechanics.utils.compute_lennard_jones_energy"><code class="name flex">
+<span>def <span class="ident">compute_lennard_jones_energy</span></span>(<span>molecule_a: list, molecule_b: list) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Computes Lennard-Jones energy between two molecules.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>molecule_a</code></strong> :&ensp;<code>list</code></dt>
+<dd>list of atoms dictionary containing properties of atom i.</dd>
+<dt><strong><code>molecule_b</code></strong> :&ensp;<code>list</code></dt>
+<dd>list of atoms dictionary containing properties of atom i.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>lennard_jones_energy_kcal:</code></dt>
+<dd>&nbsp;</dd>
+<dt><code>the Lennard-Jones energy between two molecules, in kcal/mol</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compute_lennard_jones_energy(molecule_a: list, molecule_b: list) -&gt; float:
+    &#34;&#34;&#34;
+    Computes Lennard-Jones energy between two molecules.
+
+    Parameters
+    ----------
+
+    molecule_a : list
+        list of atoms dictionary containing properties of atom i.
+    molecule_b : list
+        list of atoms dictionary containing properties of atom i.
+
+    Returns
+    -------
+
+    lennard_jones_energy_kcal:
+    the Lennard-Jones energy between two molecules, in kcal/mol
+
+    &#34;&#34;&#34;
+    kjoules_to_kcal = 0.239006
+
+    molecule_ab_distance_matrix = compute_distance_matrix(
+        molecule_a, molecule_b)
+
+    molecule_a_epsilon = get_mol_epsilon(molecule_a)
+    molecule_b_epsilon = get_mol_epsilon(molecule_b)
+    epsilon_ij_matrix = np.sqrt(
+        molecule_a_epsilon.reshape((len(molecule_a_epsilon), 1))
+        * molecule_b_epsilon.reshape((1, len(molecule_b_epsilon))))
+
+    molecule_a_sigma = get_mol_sigma(molecule_a)
+    molecule_b_sigma = get_mol_sigma(molecule_b)
+    sigma_ij_matrix = (molecule_a_sigma.reshape((len(molecule_a_sigma), 1))
+                       + molecule_b_sigma.reshape((1, len(molecule_b_sigma)))
+                       ) / 2
+
+    sigma_distance_matrix_6 = (
+        sigma_ij_matrix / molecule_ab_distance_matrix) ** 6
+    lennard_jones_energy = np.sum(
+        4 * epsilon_ij_matrix * sigma_distance_matrix_6 *
+        (sigma_distance_matrix_6 - 1))
+
+    lennard_jones_energy_kcal = float(lennard_jones_energy * kjoules_to_kcal)
+
+    return lennard_jones_energy_kcal</code></pre>
+</details>
+</dd>
+<dt id="aqelib.molecular_mechanics.utils.create_dict_per_atom"><code class="name flex">
+<span>def <span class="ident">create_dict_per_atom</span></span>(<span>parmed_pose: str) ‑> list</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create a dictionary for each atom in a molecule
+from a topology file and a coordinate file</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>topology_file</code></strong> :&ensp;<code>str</code></dt>
+<dd>Topology file of the molecule</dd>
+<dt><strong><code>coordinate_file</code></strong> :&ensp;<code>str</code></dt>
+<dd>Coordinate file of the molecule</dd>
+<dt><strong><code>parmed_pose</code></strong> :&ensp;<code>parmed object</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>atoms</code></strong> :&ensp;<code>list</code></dt>
+<dd>&nbsp;</dd>
+<dt><code>list</code> of <code>atom dictionaries containing :</code></dt>
+<dd>
+<ul>
+<li>charge</li>
+<li>atomic_number</li>
+<li>atom_reference</li>
+<li>sigma</li>
+<li>epsilon</li>
+<li>x_coord</li>
+<li>y_coord</li>
+<li>z_coord</li>
+</ul>
+</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create_dict_per_atom(parmed_pose: str) -&gt; list:
+    &#34;&#34;&#34;
+    Create a dictionary for each atom in a molecule
+    from a topology file and a coordinate file
+
+    Parameters
+    ----------
+
+    topology_file : str
+        Topology file of the molecule
+    coordinate_file : str
+        Coordinate file of the molecule
+    parmed_pose : parmed object
+
+    Returns
+    -------
+
+    atoms : list
+    list of atom dictionaries containing :
+
+        - charge
+        - atomic_number
+        - atom_reference
+        - sigma
+        - epsilon
+        - x_coord
+        - y_coord
+        - z_coord
+
+    &#34;&#34;&#34;
+
+    number_of_atoms = parmed_pose.ptr(&#39;NATOM&#39;)
+    charges = parmed_pose.parm_data[&#39;CHARGE&#39;]
+    atomic_numbers = parmed_pose.parm_data[&#39;ATOMIC_NUMBER&#39;]
+    atom_reference = parmed_pose.parm_data[&#39;ATOM_NAME&#39;]
+
+    kcal_to_kj = 4.184
+    sigma_types = np.array(parmed_pose.LJ_radius) * 2.0 / \
+        (2 ** (1 / 6))  # convert LJ radius to sigma
+    epsilon_types = np.array(parmed_pose.LJ_depth) * \
+        kcal_to_kj  # convert kcal/mol to kJ/mol
+
+    sigma = []
+    epsilon = []
+    for idx in parmed_pose.parm_data[&#39;ATOM_TYPE_INDEX&#39;]:
+        sigma.append(sigma_types[idx - 1])
+        epsilon.append(epsilon_types[idx - 1])
+
+    coordinates = parmed_pose.coordinates
+
+    x_coords = coordinates[:, 0]
+    y_coords = coordinates[:, 1]
+    z_coords = coordinates[:, 2]
+
+    atoms = []
+    for i in range(number_of_atoms):
+        atom_dict = {
+            &#34;charge&#34;: charges[i],
+            &#34;atomic_number&#34;: atomic_numbers[i],
+            &#34;atom_reference&#34;: atom_reference[i],
+            &#34;sigma&#34;: sigma[i],
+            &#34;epsilon&#34;: epsilon[i],
+            &#34;x_coord&#34;: x_coords[i],
+            &#34;y_coord&#34;: y_coords[i],
+            &#34;z_coord&#34;: z_coords[i]
+        }
+        atoms.append(atom_dict)
+
+    return atoms</code></pre>
+</details>
+</dd>
+<dt id="aqelib.molecular_mechanics.utils.get_etot"><code class="name flex">
+<span>def <span class="ident">get_etot</span></span>(<span>system_parmed) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_etot(system_parmed) -&gt; float:
+    import sander
+    &#34;&#34;&#34;
+    get total energy with sander api
+
+    Parameters
+    ----------
+
+    system_parmed : parmed Object
+
+    Returns
+    -------
+
+    e_tot: float
+    &#34;&#34;&#34;
+    system_parmed.save(&#34;temp.prmtop&#34;)
+
+    sander_runner = sander
+    opts = sander_runner.pme_input()
+    opts.ntb = 1
+    opts.ntc = 1
+    opts.ntf = 1
+    opts.cut = 8.0
+    opts.igb = 0
+    if sander_runner.is_setup():
+        sander_runner.cleanup()
+    with sander_runner.setup(&#34;temp.prmtop&#34;, system_parmed.coordinates,
+                             [100, 100, 100, 90, 90, 90], opts):
+        e, f = sander_runner.energy_forces()
+    os.remove(&#34;temp.prmtop&#34;)
+    return e.tot</code></pre>
+</details>
+</dd>
+<dt id="aqelib.molecular_mechanics.utils.get_mol_charges"><code class="name flex">
+<span>def <span class="ident">get_mol_charges</span></span>(<span>molecule: list) ‑> <built-in function array></span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>molecule</code></strong> :&ensp;<code>list</code></dt>
+<dd>list of atoms dictionary containing properties of atom i</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>charges</code></strong> :&ensp;<code>np.array</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_mol_charges(molecule: list) -&gt; np.array:
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+
+    molecule : list
+        list of atoms dictionary containing properties of atom i
+
+    Returns
+    -------
+
+    charges: np.array
+    &#34;&#34;&#34;
+
+    charges = np.array([atom[&#34;charge&#34;] for atom in molecule])
+
+    return charges</code></pre>
+</details>
+</dd>
+<dt id="aqelib.molecular_mechanics.utils.get_mol_coords"><code class="name flex">
+<span>def <span class="ident">get_mol_coords</span></span>(<span>molecule)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return list of atom coordinates:</p>
+<ul>
+<li>one list for x_coords,</li>
+<li>one y_coords,</li>
+<li>one for z_coords</li>
+</ul>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>molecule</code></strong> :&ensp;<code>list</code></dt>
+<dd>list of atoms dictionary containing properties of atom i</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>x_coords</code></strong> :&ensp;<code>list</code></dt>
+<dd>&nbsp;</dd>
+<dt><strong><code>y_coords</code></strong> :&ensp;<code>list</code></dt>
+<dd>&nbsp;</dd>
+<dt><strong><code>z_coords</code></strong> :&ensp;<code>list</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_mol_coords(molecule):
+    &#34;&#34;&#34;
+    Return list of atom coordinates:
+
+    - one list for x_coords,
+    - one y_coords,
+    - one for z_coords
+
+    Parameters
+    ----------
+
+    molecule : list
+        list of atoms dictionary containing properties of atom i
+
+    Returns
+    -------
+    x_coords : list
+    y_coords : list
+    z_coords : list
+
+    &#34;&#34;&#34;
+    xyz_coords = np.array(
+        [[atom[&#34;x_coord&#34;], atom[&#34;y_coord&#34;], atom[&#34;z_coord&#34;]]
+         for atom in molecule])
+
+    return xyz_coords</code></pre>
+</details>
+</dd>
+<dt id="aqelib.molecular_mechanics.utils.get_mol_epsilon"><code class="name flex">
+<span>def <span class="ident">get_mol_epsilon</span></span>(<span>molecule: list) ‑> <built-in function array></span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>molecule</code></strong> :&ensp;<code>list</code> of <code>atoms dictionary containing properties</code> of <code>atom i</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>epsilons</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_mol_epsilon(molecule: list) -&gt; np.array:
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+
+    molecule : list of atoms dictionary containing properties of atom i
+
+    Returns
+    -------
+
+    epsilons
+    &#34;&#34;&#34;
+
+    epsilons = np.array([atom[&#34;epsilon&#34;] for atom in molecule])
+
+    return epsilons</code></pre>
+</details>
+</dd>
+<dt id="aqelib.molecular_mechanics.utils.get_mol_sigma"><code class="name flex">
+<span>def <span class="ident">get_mol_sigma</span></span>(<span>molecule)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return list of atom sigmas</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>molecule</code></strong> :&ensp;<code>list</code></dt>
+<dd>list of atoms dictionary containing properties of atom i</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<pre><code>sigmas : list
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_mol_sigma(molecule):
+    &#34;&#34;&#34;
+    Return list of atom sigmas
+
+    Parameters
+    ----------
+
+    molecule : list
+        list of atoms dictionary containing properties of atom i
+
+    Returns
+    -------
+
+        sigmas : list
+    &#34;&#34;&#34;
+
+    sigmas = np.array([atom[&#34;sigma&#34;] for atom in molecule])
+
+    return sigmas</code></pre>
+</details>
+</dd>
+<dt id="aqelib.molecular_mechanics.utils.parametrize_ligand"><code class="name flex">
+<span>def <span class="ident">parametrize_ligand</span></span>(<span>dockedmol: object, workdir: str) ‑> object</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def parametrize_ligand(dockedmol: object,  # str | Chem.Mol
+                       workdir: str) -&gt; object:
+    writer = Chem.SDWriter(os.path.join(workdir, &#34;ligand.sdf&#34;))
+    if isinstance(dockedmol, str):
+        dockedmol: Chem.Mol = Chem.JSONToMols(dockedmol)[0]
+    writer.write(dockedmol)
+    writer.flush()
+
+    antechamber_cmd = [&#34;antechamber&#34;, &#34;-fi&#34;, &#34;sdf&#34;, &#34;-fo&#34;, &#34;mol2&#34;,
+                       &#34;-i&#34;, os.path.join(workdir, &#34;ligand.sdf&#34;),
+                       &#34;-o&#34;, os.path.join(workdir, &#34;ligand.mol2&#34;),
+                       &#34;-nc&#34;, str(Chem.GetFormalCharge(dockedmol)),
+                       &#34;-c&#34;, &#34;bcc&#34;]
+    logger.info(f&#34;antechamber_cmd is {antechamber_cmd}&#34;)
+    process = subprocess.Popen(
+        antechamber_cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        cwd=workdir)
+    stdout, stderr = process.communicate()
+    if stderr:
+        process.kill()
+        logger.error(&#34;&#34;&#34;
+        |- Cannot Antechamber : command error -|
+        |- Antechamber: STDERR -|
+        %s
+        |- Antechamber: STDOUT -|
+        %s
+        &#34;&#34;&#34;, bytes.decode(stderr, &#34;ascii&#34;), bytes.decode(stdout, &#34;ascii&#34;))
+    process.terminate()
+
+    parmchk2_cmd = [&#34;parmchk2&#34;, &#34;-f&#34;, &#34;mol2&#34;,
+                    &#34;-i&#34;, os.path.join(workdir, &#34;ligand.mol2&#34;),
+                    &#34;-o&#34;, os.path.join(workdir, &#34;ligand.frcmod&#34;)
+                    ]
+    logger.info(f&#34;parmchk2_cmd is {parmchk2_cmd}&#34;)
+
+    process = subprocess.Popen(
+        parmchk2_cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        cwd=workdir)
+
+    stdout, stderr = process.communicate()
+    if stderr:
+        process.kill()
+        logger.error(&#34;&#34;&#34;
+        |- Cannot Parmchk2 : command error -|
+        |- Parmchk2: STDERR -|
+        %s
+        |- Parmchk2: STDOUT -|
+        %s
+        &#34;&#34;&#34;, bytes.decode(stderr, &#34;ascii&#34;), bytes.decode(stdout, &#34;ascii&#34;))
+    process.terminate()
+
+    f = open(os.path.join(workdir, &#34;tleap.in&#34;), &#34;w&#34;)
+    f.write(&#34;&#34;&#34;source leaprc.gaff
+ligand = loadmol2 ligand.mol2
+loadamberparams ligand.frcmod
+saveamberparm ligand ligand.prmtop ligand.rst7
+quit&#34;&#34;&#34;)
+    f.close()
+
+    tleap_cmd = [&#34;tleap&#34;, &#34;-f&#34;, os.path.join(workdir, &#34;tleap.in&#34;)]
+    logger.info(f&#34;tleap_cmd is {tleap_cmd}&#34;)
+    process = subprocess.Popen(
+        tleap_cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        cwd=workdir)
+
+    stdout, stderr = process.communicate()
+    if stderr:
+        process.kill()
+        logger.error(&#34;&#34;&#34;
+        |- Cannot Tleap : command error -|
+        |- Tleap: STDERR -|
+        %s
+        |- Tleap: STDOUT -|
+        %s
+        &#34;&#34;&#34;, bytes.decode(stderr, &#34;ascii&#34;), bytes.decode(stdout, &#34;ascii&#34;))
+    process.terminate()
+
+    ligand = parmed.load_file(os.path.join(workdir, &#34;ligand.prmtop&#34;),
+                              os.path.join(workdir, &#34;ligand.rst7&#34;))
+    for res in ligand.residues:
+        res.name = &#39;LIG&#39;
+
+    return ligand</code></pre>
+</details>
+</dd>
+<dt id="aqelib.molecular_mechanics.utils.parametrize_protein"><code class="name flex">
+<span>def <span class="ident">parametrize_protein</span></span>(<span>protein_pdb_path: str, workdir: str) ‑> object</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def parametrize_protein(protein_pdb_path: str, workdir: str) -&gt; object:
+    protein_pdb_clean_path = os.path.join(workdir, &#34;protein_clean.pdb&#34;)
+    pdb_to_pdbclean_cmd = [&#34;pdb4amber&#34;,
+                           &#34;-i&#34;, protein_pdb_path,
+                           &#34;-o&#34;, protein_pdb_clean_path]
+    logger.info(f&#34;pdb4amber is {pdb_to_pdbclean_cmd}&#34;)
+    process = subprocess.Popen(
+        pdb_to_pdbclean_cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        cwd=workdir)
+    stdout, stderr = process.communicate()
+    if stderr:
+        process.kill()
+        logger.error(&#34;&#34;&#34;
+        |- Cannot pdb4amber : command error -|
+        |- pdb4amber: STDERR -|
+        %s
+        |- pdb4amber: STDOUT -|
+        %s
+        &#34;&#34;&#34;, bytes.decode(stderr, &#34;ascii&#34;), bytes.decode(stdout, &#34;ascii&#34;))
+    process.terminate()
+
+    file = open(os.path.join(workdir, &#34;tleap.in&#34;), &#34;a&#34;)
+    file.write(f&#34;&#34;&#34;source leaprc.protein.ff14SB
+source leaprc.gaff
+source leaprc.water.tip3p
+source leaprc.phosaa10
+set default nocenter on
+mol = loadpdb {protein_pdb_clean_path}
+saveamberparm mol protein.prmtop protein.rst7
+quit&#34;&#34;&#34;)
+    file.close()
+    tleap_cmd = [&#34;tleap&#34;, &#34;-f&#34;, os.path.join(workdir, &#34;tleap.in&#34;)]
+    logger.info(f&#34;tleap_cmd is {tleap_cmd}&#34;)
+    process = subprocess.Popen(
+        tleap_cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        cwd=workdir)
+
+    stdout, stderr = process.communicate()
+    if stderr:
+        process.kill()
+        logger.error(&#34;&#34;&#34;
+        |- Cannot Tleap : command error -|
+        |- Tleap: STDERR -|
+        %s
+        |- Tleap: STDOUT -|
+        %s
+        &#34;&#34;&#34;, bytes.decode(stderr, &#34;ascii&#34;), bytes.decode(stdout, &#34;ascii&#34;))
+    process.terminate()
+    protein = parmed.load_file(os.path.join(workdir, &#34;protein.prmtop&#34;),
+                               os.path.join(workdir, &#34;protein.rst7&#34;))
+    return protein</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="aqelib.molecular_mechanics" href="index.html">aqelib.molecular_mechanics</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="aqelib.molecular_mechanics.utils.calculate_epsilon_ij" href="#aqelib.molecular_mechanics.utils.calculate_epsilon_ij">calculate_epsilon_ij</a></code></li>
+<li><code><a title="aqelib.molecular_mechanics.utils.calculate_sigma_ij" href="#aqelib.molecular_mechanics.utils.calculate_sigma_ij">calculate_sigma_ij</a></code></li>
+<li><code><a title="aqelib.molecular_mechanics.utils.compute_distance_matrix" href="#aqelib.molecular_mechanics.utils.compute_distance_matrix">compute_distance_matrix</a></code></li>
+<li><code><a title="aqelib.molecular_mechanics.utils.compute_eint_from_top_crd" href="#aqelib.molecular_mechanics.utils.compute_eint_from_top_crd">compute_eint_from_top_crd</a></code></li>
+<li><code><a title="aqelib.molecular_mechanics.utils.compute_electrostatic_energy" href="#aqelib.molecular_mechanics.utils.compute_electrostatic_energy">compute_electrostatic_energy</a></code></li>
+<li><code><a title="aqelib.molecular_mechanics.utils.compute_interaction_energy" href="#aqelib.molecular_mechanics.utils.compute_interaction_energy">compute_interaction_energy</a></code></li>
+<li><code><a title="aqelib.molecular_mechanics.utils.compute_lennard_jones_energy" href="#aqelib.molecular_mechanics.utils.compute_lennard_jones_energy">compute_lennard_jones_energy</a></code></li>
+<li><code><a title="aqelib.molecular_mechanics.utils.create_dict_per_atom" href="#aqelib.molecular_mechanics.utils.create_dict_per_atom">create_dict_per_atom</a></code></li>
+<li><code><a title="aqelib.molecular_mechanics.utils.get_etot" href="#aqelib.molecular_mechanics.utils.get_etot">get_etot</a></code></li>
+<li><code><a title="aqelib.molecular_mechanics.utils.get_mol_charges" href="#aqelib.molecular_mechanics.utils.get_mol_charges">get_mol_charges</a></code></li>
+<li><code><a title="aqelib.molecular_mechanics.utils.get_mol_coords" href="#aqelib.molecular_mechanics.utils.get_mol_coords">get_mol_coords</a></code></li>
+<li><code><a title="aqelib.molecular_mechanics.utils.get_mol_epsilon" href="#aqelib.molecular_mechanics.utils.get_mol_epsilon">get_mol_epsilon</a></code></li>
+<li><code><a title="aqelib.molecular_mechanics.utils.get_mol_sigma" href="#aqelib.molecular_mechanics.utils.get_mol_sigma">get_mol_sigma</a></code></li>
+<li><code><a title="aqelib.molecular_mechanics.utils.parametrize_ligand" href="#aqelib.molecular_mechanics.utils.parametrize_ligand">parametrize_ligand</a></code></li>
+<li><code><a title="aqelib.molecular_mechanics.utils.parametrize_protein" href="#aqelib.molecular_mechanics.utils.parametrize_protein">parametrize_protein</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

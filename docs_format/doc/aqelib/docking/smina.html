@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>aqelib.docking.smina API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>aqelib.docking.smina</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import os
+import io
+import re
+import subprocess
+import pandas
+import configparser
+import s3fs
+import json
+from rdkit import Chem
+from rdkit.Chem import PandasTools
+from typing import List, Callable
+from functools import reduce, partial
+import rdkit.six as chemIO
+from ..loggers import chemlog
+from ..moltools import hash_mol, hash_str
+
+logger = chemlog.getLogger(__name__)
+# logger = logging.getLogger(&#34;distributed.worker&#34;)
+
+
+def generate_smina_conf(smina_config: dict,
+                        config_dir: str = &#34;&#34;) -&gt; List[tuple]:
+    from mako.template import Template
+    mytemplate = Template(filename=os.path.join(
+        config_dir, &#34;smina_config.cfg&#34;))
+    config = mytemplate.render(**smina_config)
+    conf = configparser.ConfigParser()
+    conf.read_string(f&#34;[DEFAULT]\n{config}&#34;)
+    return conf.items(&#34;DEFAULT&#34;)
+
+
+def smina_dock_mol_to_protein(conf_mol: tuple,  # Tuple[(str | Chem.Mol), str]
+                              sminaconf: List[tuple],
+                              protein_id: str,
+                              aws_credentials: dict = {}) -&gt; pandas.DataFrame:
+    &#34;&#34;&#34;smina_dock_mol_to_protein
+
+    Use smina binary:
+
+    ```bash
+    smina --receptor protein_id.pdb --ligand ${in_mol}.sdf --out ${out_mol}.sdf ${smina_config}
+    ```
+
+    mol must be ***str*** a `json Chem.Mol` or ***rdkit.Chem.Mol***
+
+    Parameters
+    ----------
+
+    conf_mol : Tuple[str or  rdkit.Chem.Mol, str] | Tuple[mol, parent_inchikey]
+        - str: ***json Chem.Mol***
+        - obj: ***rdkit.Chem.Mol***
+       rdkit mol or rdkit mol json
+        - str: ***parent_inchikey***
+
+    ```python
+    conf_mol = (mol, &#34;CNCCN(C)n1cc(c2ccccc2)c3ccccc13&#34;)
+    ```
+
+    sminaconf : List[tuple]
+        list of key:value:
+    ```python
+    smina = [
+    (&#34;size_x&#34;, 20),
+    (&#34;size_y&#34;, 20,)
+    (&#34;size_z&#34;, 20,)
+    (&#34;center_x&#34;, 6.554,)
+    (&#34;center_y&#34;, 43.184,)
+    (&#34;center_z&#34;, 51.151)
+    ]
+    ```
+    Will be converted
+    ```bash
+    --size_x 20 --size_y 20 --size_z 20 --center_x 6.554 --center_y 43.184 --center_z 51.151
+    ```
+    protein_id: str
+        protein name
+
+    aws_credentials: dict
+        use aqelib.credential.aws.get_aws_credentials
+        aws_credentials = {} by default
+        needed to get protein_id.pdb
+
+    Returns
+    -------
+
+    pandas.DataFrame
+        pandas.DataFrame with _DOCKING SUCCESS_ if successful,
+        pandas.DataFrame with _SMINA FAILED_ if smina_command does not work
+        pandas.DataFrame with _DOCKING add_explicit_hs ERROR_ if obabel did not work
+
+        Set LOGGING_LEVEL=INFO to see smina_command full command for each mol
+        if process get stderr, it will be logged as error
+
+    Raises
+    ------
+    Smina_dock_mol_to_protein is raises safe.
+    All exceptions will be logged as exception
+
+    Info
+    ----
+
+    Each protein are dowloaded in /tmp only one time.
+    It will reuse same pdb if proteine_id is already in /tmp
+
+    You can put your protein.pdb in /tmp,
+    it will use this one instead of downloading it
+
+    You can custom docking paramatere only with sminaconf input
+    &#34;&#34;&#34;  # noqa: E501
+    _MolToInchiKey: Callable = partial(Chem.MolToInchiKey, options=&#34;/FixedH&#34;)
+
+    workdir: str = &#34;/tmp/&#34;
+    confmol, parent_inchikey = conf_mol
+    hashmol: str = hash_mol(confmol, str)
+    if isinstance(confmol, str):
+        confmol: Chem.Mol = Chem.JSONToMols(confmol)[0]
+    # Will get from s3 protein_id.pdb
+    if not os.path.exists(os.path.join(workdir, f&#34;{protein_id}.pdb&#34;)):
+        s3 = s3fs.S3FileSystem(key=aws_credentials[&#34;AWS_ACCESS_KEY_ID&#34;],
+                               secret=aws_credentials[&#34;AWS_SECRET_ACCESS_KEY&#34;])
+        logger.info(f&#34;{protein_id} will be downloaded&#34;)
+        s3.get(f&#34;s3://proteins/{protein_id}/protein/protein.pdb&#34;,
+               os.path.join(workdir, f&#34;{protein_id}.pdb&#34;))
+    else:
+        logger.info(f&#34;{protein_id} already in /tmp&#34;)
+    with open(os.path.join(workdir, f&#34;{protein_id}.pdb&#34;), &#39;r&#39;) as file:
+        pdbfile = file.read()
+        file.close()
+    protein_coord_hash = hash_str(pdbfile, str)
+    sdwrite = Chem.SDWriter(os.path.join(workdir, f&#39;in_{hashmol}.sdf&#39;))
+    sdwrite.write(confmol)
+    sdwrite.flush()
+    smina_config = reduce(lambda left, right: left + right,
+                          map(lambda confarg: [
+                              f&#34;--{confarg[0]}&#34;, f&#34;{confarg[1]}&#34;],
+                              sminaconf))
+    # Docking part
+    smina_command = [&#34;smina&#34;, &#34;--receptor&#34;,
+                     os.path.join(workdir, f&#34;{protein_id}.pdb&#34;),
+                     &#34;--ligand&#34;, os.path.join(workdir, f&#34;in_{hashmol}.sdf&#34;),
+                     &#34;--out&#34;, os.path.join(workdir, f&#34;out_{hashmol}.sdf&#34;)
+                     ] + smina_config
+    logger.info(f&#34;smina_command is {smina_command}&#34;)
+    process = subprocess.Popen(
+        smina_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout, stderr = process.communicate()
+    if stderr:
+        process.kill()
+        logger.error(&#34;&#34;&#34;
+        |- Cannot Docking : command error -|
+        |- SMINA: STDERR -|
+        %s
+        |- SMINA: STDOUT -|
+        %s
+        &#34;&#34;&#34;, bytes.decode(stderr, &#34;ascii&#34;), bytes.decode(stdout, &#34;ascii&#34;))
+
+    stdout = bytes.decode(stdout, &#34;ascii&#34;)
+    process.terminate()
+    # Get random_seed refine_time loop_time #
+    smina_output = re.match(
+        r&#34;.*?\
+Using random seed: (-?\d+).*?\
+Refine time (-?\d+\.?\d+).*?\
+Loop time (-?\d+\.?\d+)&#34;,
+        stdout, re.S).groups()
+    # Get affinity  rmsd_l_b  rmsd_u_b #
+    start = stdout.find(&#34;+----------\n&#34;) + len(&#34;+----------\n&#34;)
+    end = stdout.find(&#34;Refine time&#34;)
+    # Select text between start and end cursor
+    values = map(lambda line: list(
+        # Convert each string to float
+        map(float, re.split(r&#34;\s+&#34;, line.strip())
+            ))[1:],  # Remove &#39;mode&#39; col
+        # Only keep tabular result of vina stdout
+        stdout[start:end].splitlines())
+    # Panda DataFrame of Vina poses #
+    output_df = pandas.DataFrame(data=list(values),
+                                 columns=[&#34;smina_affinity&#34;,
+                                          &#34;smina_rmsd_l_b&#34;,
+                                          &#34;smina_rmsd_u_b&#34;])
+    output_df[&#34;smina_random_seed&#34;] = float(smina_output[0])
+    output_df[&#34;smina_refine_time&#34;] = float(smina_output[1])
+    output_df[&#34;smina_loop_time&#34;] = float(smina_output[2])
+    output_df[&#34;smina_conf&#34;] = json.dumps(dict(sminaconf))
+    output_df[&#34;protein_id&#34;] = protein_id
+    output_df[&#34;protein_coord_hash&#34;] = protein_coord_hash
+    output_df[&#34;protein_pdb&#34;] = pdbfile
+    output_df[&#34;parent_inchikey&#34;] = parent_inchikey
+
+    add_explicit_hs = [&#34;obabel&#34;, &#34;-h&#34;, &#34;-isdf&#34;,
+                       os.path.join(workdir, f&#34;out_{hashmol}.sdf&#34;), &#34;-osdf&#34;]
+    process = subprocess.Popen(
+        add_explicit_hs, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout, stderr = process.communicate()
+    try:
+        poses_df: pandas.DataFrame = PandasTools.LoadSDF(io.BytesIO(stdout),
+                                                         molColName=&#34;mol&#34;,
+                                                         smilesName=&#34;SMILES&#34;,
+                                                         removeHs=False,
+                                                         embedProps=True)
+        poses_df[&#34;inchikey&#34;] = poses_df[&#34;mol&#34;].map(_MolToInchiKey)
+        poses_df[&#34;mol&#34;] = poses_df[&#34;mol&#34;].map(Chem.MolToJSON)
+        poses_df[&#34;pose_hash&#34;] = poses_df[&#34;mol&#34;].map(
+            partial(hash_mol, objtype=str))
+        poses_df[&#34;status&#34;] = &#34;DOCKING SUCCESS&#34;
+    except Exception as except_id:
+        logger.error(&#34;&#34;&#34;
+        |- Cannot load Docked sdf -|
+        %s
+        |- SMINA: STDERR -|
+        %s
+        |- SMINA: STDOUT -|
+        %s
+        &#34;&#34;&#34;, repr(except_id),
+            bytes.decode(stderr, &#34;ascii&#34;),
+            bytes.decode(stdout, &#34;ascii&#34;))
+        poses_df = pandas.DataFrame(
+            data=[{&#34;mol&#34;: Chem.MolToJSON(confmol),
+                   &#34;SMILES&#34;: Chem.MolToSmiles(confmol),
+                   &#34;inchikey&#34;: _MolToInchiKey(confmol),
+                   &#34;status&#34;: &#34;DOCKING add_explicit_hs ERROR&#34;,
+                   &#34;pose_hash&#34;: hashmol
+                   }]*len(output_df))
+    process.terminate()
+    return poses_df.join(output_df).drop(&#34;TAUTOMER_DISTRIBUTION&#34;,
+                                         errors=&#39;ignore&#39;)
+
+
+def _docked_mol_to_mol_h(moldocked: Chem.Mol) -&gt; Chem.Mol:
+    # obabel mol to sdf #
+    sio = chemIO.StringIO()
+    writer = Chem.SDWriter(sio)
+    writer.write(moldocked)
+    writer.flush()
+    # obabel sdf to pdb #
+    sdf_to_pdb_cmd = [&#34;obabel&#34;, &#34;-isdf&#34;, &#34;-opdb&#34;]
+    process = subprocess.Popen(
+        sdf_to_pdb_cmd,
+        stdout=subprocess.PIPE,
+        stdin=subprocess.PIPE,
+        stderr=subprocess.PIPE)
+    process.stdin.write(bytes(sio.getvalue(), encoding=&#34;ascii&#34;))
+    grep_stdout, grep_stderr = process.communicate()
+    sio.close()
+    process.stdin.close()
+    process.terminate()
+    # obabel add h #
+    pdb_to_pdbh_cmd = [&#34;obabel&#34;, &#34;-p&#34;, &#34;-ipdb&#34;, &#34;-opdb&#34;]
+    process = subprocess.Popen(
+        pdb_to_pdbh_cmd,
+        stdout=subprocess.PIPE,
+        stdin=subprocess.PIPE,
+        stderr=subprocess.PIPE)
+    process.stdin.write(grep_stdout)
+    grep_stdout, grep_stderr = process.communicate()
+    # pdb4amber reduce pdb #
+    process.stdin.close()
+    process.terminate()
+    pdb_to_pdbclean_cmd = [&#34;pdb4amber&#34;, &#34;--reduce&#34;]
+    process = subprocess.Popen(
+        pdb_to_pdbclean_cmd,
+        stdout=subprocess.PIPE,
+        stdin=subprocess.PIPE,
+        stderr=subprocess.PIPE)
+    process.stdin.write(grep_stdout)
+    grep_stdout_clean, grep_stderr = process.communicate()
+    process.stdin.close()
+    process.terminate()
+    if grep_stderr:
+        logger.warn(f&#34;stderr {grep_stderr.decode()}&#34;)
+    if process.returncode != 0:
+        logger.error(f&#34;Error {process.returncode} {grep_stderr}&#34;)
+        return
+    return Chem.MolFromPDBBlock(grep_stdout_clean)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="aqelib.docking.smina.generate_smina_conf"><code class="name flex">
+<span>def <span class="ident">generate_smina_conf</span></span>(<span>smina_config: dict, config_dir: str = '') ‑> List[tuple]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_smina_conf(smina_config: dict,
+                        config_dir: str = &#34;&#34;) -&gt; List[tuple]:
+    from mako.template import Template
+    mytemplate = Template(filename=os.path.join(
+        config_dir, &#34;smina_config.cfg&#34;))
+    config = mytemplate.render(**smina_config)
+    conf = configparser.ConfigParser()
+    conf.read_string(f&#34;[DEFAULT]\n{config}&#34;)
+    return conf.items(&#34;DEFAULT&#34;)</code></pre>
+</details>
+</dd>
+<dt id="aqelib.docking.smina.smina_dock_mol_to_protein"><code class="name flex">
+<span>def <span class="ident">smina_dock_mol_to_protein</span></span>(<span>conf_mol: tuple, sminaconf: List[tuple], protein_id: str, aws_credentials: dict = {}) ‑> pandas.core.frame.DataFrame</span>
+</code></dt>
+<dd>
+<div class="desc"><p>smina_dock_mol_to_protein</p>
+<p>Use smina binary:</p>
+<pre><code class="language-bash">smina --receptor protein_id.pdb --ligand ${in_mol}.sdf --out ${out_mol}.sdf ${smina_config}
+</code></pre>
+<p>mol must be <strong><em>str</em></strong> a <code>json Chem.Mol</code> or <strong><em>rdkit.Chem.Mol</em></strong></p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>conf_mol</code></strong> :&ensp;<code>Tuple[str</code> or
+<code>rdkit.Chem.Mol, str] | Tuple[mol, parent_inchikey]</code></dt>
+<dd>
+<ul>
+<li>str: <strong><em>json Chem.Mol</em></strong></li>
+<li>obj: <strong><em>rdkit.Chem.Mol</em></strong></li>
+</ul>
+</dd>
+</dl>
+<p>rdkit mol or rdkit mol json
+- str: <strong><em>parent_inchikey</em></strong></p>
+<pre><code class="language-python">conf_mol = (mol, &quot;CNCCN(C)n1cc(c2ccccc2)c3ccccc13&quot;)
+</code></pre>
+<dl>
+<dt><strong><code>sminaconf</code></strong> :&ensp;<code>List[tuple]</code></dt>
+<dd>list of key:value:</dd>
+</dl>
+<pre><code class="language-python">smina = [
+(&quot;size_x&quot;, 20),
+(&quot;size_y&quot;, 20,)
+(&quot;size_z&quot;, 20,)
+(&quot;center_x&quot;, 6.554,)
+(&quot;center_y&quot;, 43.184,)
+(&quot;center_z&quot;, 51.151)
+]
+</code></pre>
+<p>Will be converted</p>
+<pre><code class="language-bash">--size_x 20 --size_y 20 --size_z 20 --center_x 6.554 --center_y 43.184 --center_z 51.151
+</code></pre>
+<dl>
+<dt><strong><code>protein_id</code></strong> :&ensp;<code>str</code></dt>
+<dd>protein name</dd>
+<dt><strong><code>aws_credentials</code></strong> :&ensp;<code>dict</code></dt>
+<dd>use aqelib.credential.aws.get_aws_credentials
+aws_credentials = {} by default
+needed to get protein_id.pdb</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>pandas.DataFrame</code></dt>
+<dd>
+<p>pandas.DataFrame with <em>DOCKING SUCCESS</em> if successful,
+pandas.DataFrame with <em>SMINA FAILED</em> if smina_command does not work
+pandas.DataFrame with <em>DOCKING add_explicit_hs ERROR</em> if obabel did not work</p>
+<p>Set LOGGING_LEVEL=INFO to see smina_command full command for each mol
+if process get stderr, it will be logged as error</p>
+</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt>Smina_dock_mol_to_protein is raises safe.</dt>
+<dt><code>All exceptions will be logged as exception</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="info">Info</h2>
+<p>Each protein are dowloaded in /tmp only one time.
+It will reuse same pdb if proteine_id is already in /tmp</p>
+<p>You can put your protein.pdb in /tmp,
+it will use this one instead of downloading it</p>
+<p>You can custom docking paramatere only with sminaconf input</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def smina_dock_mol_to_protein(conf_mol: tuple,  # Tuple[(str | Chem.Mol), str]
+                              sminaconf: List[tuple],
+                              protein_id: str,
+                              aws_credentials: dict = {}) -&gt; pandas.DataFrame:
+    &#34;&#34;&#34;smina_dock_mol_to_protein
+
+    Use smina binary:
+
+    ```bash
+    smina --receptor protein_id.pdb --ligand ${in_mol}.sdf --out ${out_mol}.sdf ${smina_config}
+    ```
+
+    mol must be ***str*** a `json Chem.Mol` or ***rdkit.Chem.Mol***
+
+    Parameters
+    ----------
+
+    conf_mol : Tuple[str or  rdkit.Chem.Mol, str] | Tuple[mol, parent_inchikey]
+        - str: ***json Chem.Mol***
+        - obj: ***rdkit.Chem.Mol***
+       rdkit mol or rdkit mol json
+        - str: ***parent_inchikey***
+
+    ```python
+    conf_mol = (mol, &#34;CNCCN(C)n1cc(c2ccccc2)c3ccccc13&#34;)
+    ```
+
+    sminaconf : List[tuple]
+        list of key:value:
+    ```python
+    smina = [
+    (&#34;size_x&#34;, 20),
+    (&#34;size_y&#34;, 20,)
+    (&#34;size_z&#34;, 20,)
+    (&#34;center_x&#34;, 6.554,)
+    (&#34;center_y&#34;, 43.184,)
+    (&#34;center_z&#34;, 51.151)
+    ]
+    ```
+    Will be converted
+    ```bash
+    --size_x 20 --size_y 20 --size_z 20 --center_x 6.554 --center_y 43.184 --center_z 51.151
+    ```
+    protein_id: str
+        protein name
+
+    aws_credentials: dict
+        use aqelib.credential.aws.get_aws_credentials
+        aws_credentials = {} by default
+        needed to get protein_id.pdb
+
+    Returns
+    -------
+
+    pandas.DataFrame
+        pandas.DataFrame with _DOCKING SUCCESS_ if successful,
+        pandas.DataFrame with _SMINA FAILED_ if smina_command does not work
+        pandas.DataFrame with _DOCKING add_explicit_hs ERROR_ if obabel did not work
+
+        Set LOGGING_LEVEL=INFO to see smina_command full command for each mol
+        if process get stderr, it will be logged as error
+
+    Raises
+    ------
+    Smina_dock_mol_to_protein is raises safe.
+    All exceptions will be logged as exception
+
+    Info
+    ----
+
+    Each protein are dowloaded in /tmp only one time.
+    It will reuse same pdb if proteine_id is already in /tmp
+
+    You can put your protein.pdb in /tmp,
+    it will use this one instead of downloading it
+
+    You can custom docking paramatere only with sminaconf input
+    &#34;&#34;&#34;  # noqa: E501
+    _MolToInchiKey: Callable = partial(Chem.MolToInchiKey, options=&#34;/FixedH&#34;)
+
+    workdir: str = &#34;/tmp/&#34;
+    confmol, parent_inchikey = conf_mol
+    hashmol: str = hash_mol(confmol, str)
+    if isinstance(confmol, str):
+        confmol: Chem.Mol = Chem.JSONToMols(confmol)[0]
+    # Will get from s3 protein_id.pdb
+    if not os.path.exists(os.path.join(workdir, f&#34;{protein_id}.pdb&#34;)):
+        s3 = s3fs.S3FileSystem(key=aws_credentials[&#34;AWS_ACCESS_KEY_ID&#34;],
+                               secret=aws_credentials[&#34;AWS_SECRET_ACCESS_KEY&#34;])
+        logger.info(f&#34;{protein_id} will be downloaded&#34;)
+        s3.get(f&#34;s3://proteins/{protein_id}/protein/protein.pdb&#34;,
+               os.path.join(workdir, f&#34;{protein_id}.pdb&#34;))
+    else:
+        logger.info(f&#34;{protein_id} already in /tmp&#34;)
+    with open(os.path.join(workdir, f&#34;{protein_id}.pdb&#34;), &#39;r&#39;) as file:
+        pdbfile = file.read()
+        file.close()
+    protein_coord_hash = hash_str(pdbfile, str)
+    sdwrite = Chem.SDWriter(os.path.join(workdir, f&#39;in_{hashmol}.sdf&#39;))
+    sdwrite.write(confmol)
+    sdwrite.flush()
+    smina_config = reduce(lambda left, right: left + right,
+                          map(lambda confarg: [
+                              f&#34;--{confarg[0]}&#34;, f&#34;{confarg[1]}&#34;],
+                              sminaconf))
+    # Docking part
+    smina_command = [&#34;smina&#34;, &#34;--receptor&#34;,
+                     os.path.join(workdir, f&#34;{protein_id}.pdb&#34;),
+                     &#34;--ligand&#34;, os.path.join(workdir, f&#34;in_{hashmol}.sdf&#34;),
+                     &#34;--out&#34;, os.path.join(workdir, f&#34;out_{hashmol}.sdf&#34;)
+                     ] + smina_config
+    logger.info(f&#34;smina_command is {smina_command}&#34;)
+    process = subprocess.Popen(
+        smina_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout, stderr = process.communicate()
+    if stderr:
+        process.kill()
+        logger.error(&#34;&#34;&#34;
+        |- Cannot Docking : command error -|
+        |- SMINA: STDERR -|
+        %s
+        |- SMINA: STDOUT -|
+        %s
+        &#34;&#34;&#34;, bytes.decode(stderr, &#34;ascii&#34;), bytes.decode(stdout, &#34;ascii&#34;))
+
+    stdout = bytes.decode(stdout, &#34;ascii&#34;)
+    process.terminate()
+    # Get random_seed refine_time loop_time #
+    smina_output = re.match(
+        r&#34;.*?\
+Using random seed: (-?\d+).*?\
+Refine time (-?\d+\.?\d+).*?\
+Loop time (-?\d+\.?\d+)&#34;,
+        stdout, re.S).groups()
+    # Get affinity  rmsd_l_b  rmsd_u_b #
+    start = stdout.find(&#34;+----------\n&#34;) + len(&#34;+----------\n&#34;)
+    end = stdout.find(&#34;Refine time&#34;)
+    # Select text between start and end cursor
+    values = map(lambda line: list(
+        # Convert each string to float
+        map(float, re.split(r&#34;\s+&#34;, line.strip())
+            ))[1:],  # Remove &#39;mode&#39; col
+        # Only keep tabular result of vina stdout
+        stdout[start:end].splitlines())
+    # Panda DataFrame of Vina poses #
+    output_df = pandas.DataFrame(data=list(values),
+                                 columns=[&#34;smina_affinity&#34;,
+                                          &#34;smina_rmsd_l_b&#34;,
+                                          &#34;smina_rmsd_u_b&#34;])
+    output_df[&#34;smina_random_seed&#34;] = float(smina_output[0])
+    output_df[&#34;smina_refine_time&#34;] = float(smina_output[1])
+    output_df[&#34;smina_loop_time&#34;] = float(smina_output[2])
+    output_df[&#34;smina_conf&#34;] = json.dumps(dict(sminaconf))
+    output_df[&#34;protein_id&#34;] = protein_id
+    output_df[&#34;protein_coord_hash&#34;] = protein_coord_hash
+    output_df[&#34;protein_pdb&#34;] = pdbfile
+    output_df[&#34;parent_inchikey&#34;] = parent_inchikey
+
+    add_explicit_hs = [&#34;obabel&#34;, &#34;-h&#34;, &#34;-isdf&#34;,
+                       os.path.join(workdir, f&#34;out_{hashmol}.sdf&#34;), &#34;-osdf&#34;]
+    process = subprocess.Popen(
+        add_explicit_hs, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout, stderr = process.communicate()
+    try:
+        poses_df: pandas.DataFrame = PandasTools.LoadSDF(io.BytesIO(stdout),
+                                                         molColName=&#34;mol&#34;,
+                                                         smilesName=&#34;SMILES&#34;,
+                                                         removeHs=False,
+                                                         embedProps=True)
+        poses_df[&#34;inchikey&#34;] = poses_df[&#34;mol&#34;].map(_MolToInchiKey)
+        poses_df[&#34;mol&#34;] = poses_df[&#34;mol&#34;].map(Chem.MolToJSON)
+        poses_df[&#34;pose_hash&#34;] = poses_df[&#34;mol&#34;].map(
+            partial(hash_mol, objtype=str))
+        poses_df[&#34;status&#34;] = &#34;DOCKING SUCCESS&#34;
+    except Exception as except_id:
+        logger.error(&#34;&#34;&#34;
+        |- Cannot load Docked sdf -|
+        %s
+        |- SMINA: STDERR -|
+        %s
+        |- SMINA: STDOUT -|
+        %s
+        &#34;&#34;&#34;, repr(except_id),
+            bytes.decode(stderr, &#34;ascii&#34;),
+            bytes.decode(stdout, &#34;ascii&#34;))
+        poses_df = pandas.DataFrame(
+            data=[{&#34;mol&#34;: Chem.MolToJSON(confmol),
+                   &#34;SMILES&#34;: Chem.MolToSmiles(confmol),
+                   &#34;inchikey&#34;: _MolToInchiKey(confmol),
+                   &#34;status&#34;: &#34;DOCKING add_explicit_hs ERROR&#34;,
+                   &#34;pose_hash&#34;: hashmol
+                   }]*len(output_df))
+    process.terminate()
+    return poses_df.join(output_df).drop(&#34;TAUTOMER_DISTRIBUTION&#34;,
+                                         errors=&#39;ignore&#39;)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="aqelib.docking" href="index.html">aqelib.docking</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="aqelib.docking.smina.generate_smina_conf" href="#aqelib.docking.smina.generate_smina_conf">generate_smina_conf</a></code></li>
+<li><code><a title="aqelib.docking.smina.smina_dock_mol_to_protein" href="#aqelib.docking.smina.smina_dock_mol_to_protein">smina_dock_mol_to_protein</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

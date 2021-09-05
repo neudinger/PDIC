@@ -1,0 +1,65 @@
+# Project information
+site_name: PDIC
+site_description: 'Interface description language c/c++ to PDI'
+site_author: 'Barre Kevin'
+# site_url: ''
+# material, readthedocs, bootstrap4
+
+theme:
+  features:
+    - navigation.instant
+  name: 'material' 
+  language: 'fr'
+  palette:
+    primary: 'blue grey'
+    accent: 'teal'
+  font:
+    text: 'Ubuntu'
+    code: 'Ubuntu Mono'
+  extra:
+    disqus: 'Barre kevin'
+    version:
+      default: stable
+
+markdown_extensions:
+    - admonition
+    - meta
+    - codehilite:
+        linenums: true
+        guess_lang: false
+    - footnotes
+    - toc:
+        permalink: "#"
+    - pymdownx.arithmatex
+    - pymdownx.betterem:
+        smart_enable: all
+    - pymdownx.caret
+    - pymdownx.critic
+    - pymdownx.details
+    - pymdownx.emoji:
+        emoji_generator: python/name:pymdownx.emoji.to_svg
+    - pymdownx.inlinehilite
+    - pymdownx.magiclink
+    - pymdownx.mark
+    - pymdownx.smartsymbols
+    - pymdownx.superfences
+    - pymdownx.tasklist:
+        custom_checkbox: true
+    - pymdownx.tilde
+
+nav:
+  - Abstract: '1.0-Abstract.md'
+  - Usage:
+    - Requirement: '2.0-Requirement.md'
+    - Binary: '2.1-Binary.md'
+    - Python: '2.2-Python.md'
+  - Developpement: '3.0-Developpement.md'
+  - Links: 4.0-Links.md
+  - Extra: 5.0-Extra.md
+  - Documentations: 5.1-Documentations.md
+# plugins:
+#     - redirects:
+#         redirect_maps:
+#             ./docs/1.0-Abstract.md: 1.0-Abstract.md
+#             # 'old/file.md': 'new/file.md'
+#             # 'some_file.md': 'http://external.url.com/foobar'

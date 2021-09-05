@@ -1,0 +1,11 @@
+llvm-project-llvmorg-12.0.1/
+build/
+docs/_build
+tests/bin
+Testing/
+CMakeFiles/
+dist/
+html/
+.pytest_cache/
+_skbuild/
+.vscode

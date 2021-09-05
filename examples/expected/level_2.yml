@@ -1,0 +1,32 @@
+structs:
+ Var8:
+  type: record
+  name: Var8
+  alias: [var]
+  fieldsize: 3
+  buffersize: 28
+  packed: false
+  members:
+   char_tab: { type: array, subtype: char, size: 20 }
+   my_char:
+    offset: 24   
+    type: char
+   my_int:
+    type: int64
+data:
+ array_of_pointer_of_array: { type: array, subtype:  { type: pointer, subtype:  { type: array, subtype: int, size: 42 } }, size: 21 }
+ my_var:
+  type: record
+  name: Var8
+  alias: [var]
+  fieldsize: 3
+  buffersize: 28
+  packed: false
+  members:
+   char_tab: { type: array, subtype: char, size: 20 }
+   my_char:
+    offset: 24   
+    type: char
+   my_int:
+    type: int64
+

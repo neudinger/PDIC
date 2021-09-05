@@ -1,124 +1,149 @@
-# PDIC
+# PDIC [![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
 PDIC: [(IDL)](https://en.wikipedia.org/wiki/Interface_description_language) Transpiler Source-to-source compiler C/C++ to YAML Portable Data Interface Description
 
-## Abstract
+Project related to [PDI](https://gitlab.maisondelasimulation.fr/pdidev/pdi)
+[![Linux](https://svgshare.com/i/Zhy.svg)](https://svgshare.com/i/Zhy.svg)
 
-Pronounce: PDI SEE
+[![GitHub license](https://img.shields.io/badge/license-EUPL-blue.svg)](https://raw.githubusercontent.com/herotc/hero-rotation/master/LICENSE) [![Build Github Status](https://github.com/neudinger/PDIC/workflows/Build%20pdic/badge.svg)](https://github.com/neudinger/PDIC/actions)
 
-This project can see [PDI Portable Data Interface](https://gitlab.maisondelasimulation.fr/pdidev/pdi) Representation in c/c++
+[![PyPI version](https://badge.fury.io/py/pdic.svg)](https://badge.fury.io/py/pdic)
+[![PyPI implementation](https://img.shields.io/pypi/implementation/pdic.svg)](https://pypi.python.org/pypi/pdic/)
 
-## Descriptions
+[![Doc](https://readthedocs.org/projects/pip/badge/?version=latest)](https://neudinger.github.io/PDIC/)
+[![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
 
-[![GitHub license](https://img.shields.io/badge/license-EUPL-blue.svg)](https://raw.githubusercontent.com/herotc/hero-rotation/master/LICENSE)
+[![GitHub release](https://img.shields.io/github/release/neudinger/PDIC.svg)](https://GitHub.com/neudinger/PDIC/releases/) [![Docker](https://badgen.net/badge/icon/docker?icon=docker&label)](https://https://docker.com/)
+
+From C/C++ to Yaml Description
+
+|Simple binary|Python library|
+|:-:|:-:|
+|static binary|Python 3|
+|`./pdic file.c`|`import pdic; result:str = pdic.files_to_pdi()`|
+
+## Instalation
+
+Binary
+
+```sh
+cmake -S . -DBINARY:BOOL=ON -B build && cmake --build build -- -j `nproc`
+```
+
+Google Test
+
+```sh
+cmake -S . -DTEST:BOOL=ON -B build && cmake --build build -- -j `nproc`
+cd build && ctest
+```
+
+Python
+
+```sh
+python setup.py build -G "Unix Makefiles"
+python3 setup.py bdist_wheel -G "Unix Makefiles" -j `nproc`
+python setup.py build_ext  -G "Unix Makefiles" --inplace -j `nproc`
+pytest
+```
 
 ## Usage
 
-```sh
-./pdic ../PDI_test_parse.h --
-```
-
-`PDI_test_parse.yml` will be created
-
-## Installation
-
-Dependencies:
-
-- cmake
-- ninja
-- make
-- all clang and llvm tools
-- boost
-
-Follow: [LibTooling and LibASTMatchers](https://clang.llvm.org/docs/LibASTMatchersTutorial.html) installation tutorial if you want to contribute.
-
-Use `gold` or `lld` because `ld` use too much ram
-
-```sh
-cd llvm-project-llvmorg-12.0.1
-mkdir build && cd build
-cmake -G Ninja ../llvm -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra" -DCMAKE_BUILD_TYPE=Release -DLLVM_USE_LINKER=gold
-```
-
-Or install clang and llvm on your system
-
-Compile PDIC project
-
-```sh
-cd pdic
-wget https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-12.0.1.tar.gz
-tar xvf llvmorg-12.0.1.tar.gz
-mkdir build && cd build
-cmake ..
-make
-```
-
-## Example
-
-Files can be:
-
-- file.c
-- file.h
-- file.hh / file.hpp
-- file.cc / file.cpp
-
-```c
+```c++
 #pragma pdi on
 
-int global_int;
-char global_char;
-void *global_pointer;
-float **global_float_pointer_of_pointer;
+typedef struct Var8
+{
+#pragma pdi type : int64
+    int my_int;
+    char char_tab[20];
+    char my_char;
+} var;
 
-// pointer to array of int of size 42
-#pragma pdi type:int32, size:[42]
-int *pointer_of_array;
+#pragma pdi size:[42]
+int **array_of_pointer_of_array[21];
 
-double *array_of_pointer[21];
-
-#pragma pdi type:int128
-#pragma pdi size:[10][10][10]
-unsigned ****my_cube;
+var my_var;
 
 #pragma pdi off
 ```
 
-Will be see and describe
+Will be see and describe as follow
 
 ```yml
+structs:
+ Var8:
+  type: record
+  name: Var8
+  alias: [var]
+  fieldsize: 3
+  buffersize: 28
+  packed: false
+  members:
+   char_tab: { type: array, subtype: char, size: 20 }
+   my_char:
+    offset: 24   
+    type: char
+   my_int:
+    type: int64
 data:
- array: { type: array, subtype: int, size: 24 }
- array_of_pointer: { type: array, subtype:  { type: pointer, subtype: double }, size: 21 }
- global_char: 
-  type: char
- global_float_pointer_of_pointer: { type: pointer, subtype:  { type: pointer, subtype: float } }
- global_int: 
-  type: int
- global_pointer: { type: pointer, subtype: void }
- my_cube: { type: pointer, subtype:  { type: array, subtype: int128, size: [10, 10, 10] } }
- pointer_of_array: { type: pointer, subtype: int }
+ array_of_pointer_of_array: { type: array, subtype:  { type: pointer, subtype:  { type: array, subtype: int, size: 42 } }, size: 21 }
+ my_var:
+  type: record
+  name: Var8
+  alias: [var]
+  fieldsize: 3
+  buffersize: 28
+  packed: false
+  members:
+   char_tab: { type: array, subtype: char, size: 20 }
+   my_char:
+    offset: 24   
+    type: char
+   my_int:
+    type: int64
 ```
 
-```sh
-./pdic ../examples/level_1.c --
+Python Usage
+
+```python
+import os
+import pathlib
+import yaml
+import pdic
+
+here = pathlib.Path(__file__).parent.resolve()
+# pip show -f pdic
+if __name__ == "__main__":
+    pdi_yml_description: str = pdic.files_to_pdi([os.path.join(here, "level_1.c"),
+                                                  os.path.join(here, "level_2.c")])
+    print(pdi_yml_description)
+    print(yaml.dump(yaml.load(pdi_yml_description)))
 ```
 
-## Usefull link
+## Index
 
-### Clang / LLVM
+1. [Abstract](/docs/1.0-Abstract.md)
+2. [Usage](/docs/2.0-Requirement.md)
+      1. [Binary](/docs/2.1-Binary.md)
+      2. [Python](/docs/2.2-Python.md)
+3. [Developpement](/docs/3.0-Developpement.md)
+      - Code
+      - Documentation
+      - Test
+      - Deploy
+4. [Links](/docs/4.0-Links)
+      - [Autre Documentation](/docs/5.1-Documentations.md)
+      - Biblio
+      - Code example
+5. [Extra](/docs/5.0-Extra.md)
+      - Clang LLVM
+      - Mind Map
+      - Graph
+      - UML
+6. Contact / Credits
 
-- <https://jonasdevlieghere.com/understanding-the-clang-ast/#asttraversal>
-- <https://blog.quarkslab.com/implementing-a-custom-directive-handler-in-clang.html>
-- <https://clang.llvm.org/docs/RAVFrontendAction.html>
-- <https://opensource.apple.com/source/clang/clang-425.0.24/src/tools/clang/docs/RAVFrontendAction.html>
-  RecursiveASTVisitor Tutorial
-- <https://freecompilercamp.org/clang-AST-basics/>
-- <https://danielbeard.io/2016/04/19/clang-frontend-action-part-1.html>
-- <https://opensource.apple.com/source/clang/clang-500.2.76/src/tools/clang/docs/RAVFrontendAction.rst.auto.html>
+Credits
 
-### Padding and packing in c/c++
+Barre Kevin [neudinger](https://github.com/) (Software Scientist)
 
-- <https://grandidierite.github.io/structure-alignment-and-packing-in-C-programming/>
-- <https://www.delftstack.com/howto/c/struct-alignment-in-c/>
-- <https://fresh2refresh.com/c-programming/c-structure-padding/>
-- <https://www.geeksforgeeks.org/structure-member-alignment-padding-and-data-packing/>
+CEA pdi team
