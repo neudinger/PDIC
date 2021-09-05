@@ -1,51 +1,58 @@
-cmake_minimum_required(VERSION 3.20)
-project(pdi)
+cmake_minimum_required(VERSION 3.21)
 set(TARGET "pdic")
+project(${TARGET} VERSION 0.1)
+include(FetchContent)
 
-find_package(LLVM REQUIRED CONFIG)
-find_package(Clang REQUIRED CONFIG)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}")
-message(STATUS "Using LLVMConfig.cmake in: ${LLVM_DIR}")
+option(DEBUG "DEBUG option" OFF) # OFF by default
+message(STATUS "DEBUG is " ${DEBUG})
+option(SKBUILD "SKBUILD option" OFF) # OFF by default
+message(STATUS "SKBUILD is " ${SKBUILD})
+option(BINARY "BINARY option" OFF) # OFF by default
+message(STATUS "BINARY is " ${BINARY})
+option(TEST "TEST option" OFF) # OFF by default
+message(STATUS "TEST is " ${TEST})
 
-# Use given `clang` toolchain.
-set(CMAKE_CXX_COMPILER "${LLVM_TOOLS_BINARY_DIR}/clang++")
-set(CMAKE_C_COMPILER "${LLVM_TOOLS_BINARY_DIR}/clang")
-list(APPEND CMAKE_MODULE_PATH "${LLVM_CMAKE_DIR}")
 
-# set(CMAKE_CXX_STANDARD 20)
-# set(CMAKE_CXX_STANDARD_REQUIRED ON)
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++2a")
+if(DEBUG)
+  add_compile_definitions(DEBUG=True)
+endif(DEBUG)
 
-# will remove `--` compilation command 
-# and add compilation databases for clang on this project.
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DCMAKE_EXPORT_COMPILE_COMMANDS")
+set(WORKDIR ${CMAKE_CURRENT_LIST_DIR}/src/pdic)
+message(STATUS "WORKDIR in: ${WORKDIR}")
 
-# Set compiler flags.
-include(HandleLLVMOptions)
-# Use LLVM and clang headers.
-include_directories(${LLVM_INCLUDE_DIRS} ${CLANG_INCLUDE_DIRS})
-
-include_directories(${LLVM_INCLUDE_DIRS})
-add_definitions(${LLVM_DEFINITIONS})
-list(APPEND CMAKE_MODULE_PATH "${LLVM_CMAKE_DIR}")
-include(AddLLVM)
-include("./llvm-project-llvmorg-12.0.1/clang/cmake/modules/AddClang.cmake")
-
-file(GLOB src
-    "src/*.hpp"
-    "src/*.cpp"
+file(GLOB SRC
+  "${WORKDIR}/*.hpp"
+  "${WORKDIR}/*.cpp"
 )
 
-add_clang_executable(${TARGET} ${src})
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/modules)
 
-target_link_libraries(${TARGET}
-  PRIVATE
-  clangAST
-  clangBasic
-  clangFrontend
-  clangTooling
-  clangASTMatchers
+
+if((BINARY OR TEST) OR SKBUILD)
+  include(Builder)
+else((BINARY OR TEST) OR SKBUILD)
+  message("
+  Please Use one at least one cmake flag \n\
+  But only one between\n\
+  - SKBUILD : python lib\n\
+  - BINARY : embedded binary\n\
+  - TEST : ctest\n\n\
+
+  cmake -S . \n\
+  -DSKBUILD:BOOL=OFF # or ON\n\
+  -DBINARY:BOOL=ON  # or OFF\n\
+  -DTEST:BOOL=OFF # or ON\n\
+  -DDEBUG:BOOL=ON # or OFF\n\
+  -B build "
   )
+endif((BINARY OR TEST) OR SKBUILD)
 
-# cmake .. ; make && ./pdic ../../PDI_test_parse.h --
+set(ignoreMe "${SKBUILD}")
+
+unset(DEBUG CACHE)
+unset(SKBUILD CACHE)
+unset(BINARY CACHE)
+unset(TEST CACHE)

@@ -1,0 +1,14 @@
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.9
+  - pip
+  - cmake=3.21.2
+  - scikit-build
+  - ninja
+  - twine
+  - pytest
+  - pyyaml
+  - pip:
+    - "pdoc3"

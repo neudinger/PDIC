@@ -9,7 +9,7 @@
  * -----
  * Licenses: EUPL
  * -----
- * Copyright 2021 - 2021 NinjaTech
+ * Copyright 2021 - 2021 neudinger
  */
 
 short notsee;

@@ -1,0 +1,129 @@
+name: Build pdic
+on:
+  push:
+    tags:
+      - "*"
+jobs:
+  create_release:
+    if: contains(github.ref, 'v')
+    name: Create release
+    runs-on: ubuntu-latest
+    outputs:
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+      id: ${{ steps.create_release.outputs.id }}
+    steps:
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+  build:
+    name: Build ${{ matrix.os }}
+    needs: create_release
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ubuntu-20.04] # , macOS-10.15, windows-2019
+    if: contains(github.ref, 'v')
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Get the version
+        id: get_version
+        run: |
+          echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
+      - name: Install system requirement
+        if: ${{ matrix.os == 'ubuntu-20.04' }}
+        run: |
+          sudo apt update && sudo apt install -y \
+          ca-certificates sudo git
+        id: checkout
+      - name: Conda activate
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          miniconda-version: "latest"
+          activate-environment: pdic-env
+      - name: Install conda dependencies
+        shell: bash -l {0}
+        id: installation
+        run: |
+          set -eux; conda env update --name pdic-env --file .devcontainer/conda-github-requirement.yml
+      - name: Deploy mkdocs
+        if: ${{ contains(github.ref, 'p') && matrix.os != 'windows-2019'}}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash -l {0}
+        run: |
+            mkdocs gh-deploy --force
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build Docker image
+        run: docker build . -f .devcontainer/Dockerfile -t pdic:latest
+      - name: Build in Docker image
+        id: builder
+        shell: bash -l {0}
+        run: |
+          version=${{ steps.get_version.outputs.VERSION }}
+          export version=${version//[!0-9.]/}
+          echo ::set-output name=PYVERSION::$(echo ${version})
+          sudo chmod -R a+w `pwd`
+          docker run -e version=${version} -v `pwd`:/home/pdi/app pdic python3 setup.py build
+          docker run -e version=${version} -v `pwd`:/home/pdi/app pdic python3 setup.py bdist_wheel --plat-name manylinux1_x86_64 -j `nproc`
+          docker run -e version=${version} -v `pwd`:/home/pdi/app pdic python3 setup.py bdist_wheel --plat-name manylinux2010_x86_64 -j `nproc`
+          docker run -e version=${version} -v `pwd`:/home/pdi/app pdic python3 setup.py build_ext  --inplace -j `nproc`
+          docker run -v `pwd`:/home/pdi/app pdic cmake -S . -DBINARY:BOOL=ON -B build
+          docker run -v `pwd`:/home/pdi/app pdic cmake --build build -- -j `nproc`
+          docker run -v `pwd`:/home/pdi/app pdic cmake -S . -DTEST:BOOL=ON -B build
+          docker run -v `pwd`:/home/pdi/app pdic cmake --build build -- -j `nproc`
+          docker run -v `pwd`:/home/pdi/app pdic /bin/bash -c "pip install dist/pdic-${version}-cp39-cp39-manylinux1_x86_64.whl && pytest"
+          docker run -v `pwd`:/home/pdi/app pdic ctest --test-dir build
+          docker run -v `pwd`:/home/pdi/app pdic /bin/bash -c "pip install dist/pdic-${version}-cp39-cp39-manylinux1_x86_64.whl && pdoc3 pdic --pdf > dist/pdic-pdoc3-${version}.md && pdoc3 pdic --html -o dist/"
+          sudo chown -R $USER `pwd`
+          mv build/pdic.static dist/
+          mv ./docs_format/*.ttf .
+      - name: Build pandoc documentation
+        uses: docker://pandoc/latex
+        with:
+          args: >-  # allows you to break string into multiple lines
+            --metadata=title:"PDIC: (IDL) Transpiler Source-to-source compiler C/C++ to YAML Description based on clang "
+            --variable=documentclass:"extarticle"
+            --variable=mainfont:"Roboto"
+            --variable=mainfontoptions:"Extension=.ttf, UprightFont=*-Regular, BoldFont=*-Bold, ItalicFont=*-Italic, BoldItalicFont=*-BoldItalic"
+            --variable=fontsize:"10pt"
+            --variable=geometry:"margin=1.5cm,a4paper"
+            --metadata=author:"BARRE kevin"
+            --from=markdown+abbreviations+tex_math_single_backslash
+            --pdf-engine=xelatex
+            --toc --toc-depth=4
+            --output=dist/pdic-pdoc3-${{ steps.builder.outputs.PYVERSION }}.pdf
+            dist/pdic-pdoc3-${{ steps.builder.outputs.PYVERSION }}.md
+      - name: Upload Releases Assets
+        id: upload-release-assets
+        uses: dwenegar/upload-release-assets@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          release_id: ${{ needs.create_release.outputs.id }}
+          assets_path: ./dist/
+      - name: Deploy to PyPI ${{ matrix.os }}
+        if: ${{ contains(github.ref, 'p') && matrix.os != 'windows-2019'}}
+        shell: bash -l {0}
+        env:
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        run: |
+          twine upload -u __token__ -p $TWINE_PASSWORD dist/*.whl
+      - name: Deploy to PyPI windows-2019
+        if: ${{ contains(github.ref, 'p') && matrix.os == 'windows-2019'}}
+        run: |
+          pip install twine
+          twine upload -u __token__ -p ${{ secrets.PYPI_PASSWORD }} dist/*.whl
