@@ -146,4 +146,5 @@ Credits
 
 Barre Kevin [neudinger](https://github.com/) (Software Scientist)
 
-CEA pdi team
+Julien Bigo [jbigot](https://gitlab.maisondelasimulation.fr/jbigot)
+CEA PDI TEAM
